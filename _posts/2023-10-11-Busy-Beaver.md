@@ -33,6 +33,15 @@ Let's consider some futuristic hyper-intelligent AGI (artifical general intellig
 ---
 # A quick note about Turing Completeness
 
+The <a href="https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis">Church-Turing thesis</a> is a conjecture that argues that all sufficiently advanced programming langauges can solve the exact same set of mathematical, well-defined problems. From BASIC to modern Python, all program languages you have ever used 
+
+In other words, any 
+
+
+states that a language like BASIC can solve any problem that any future programming
+
+
+
 First of all, no matter what our technological advances are, 
 
 
