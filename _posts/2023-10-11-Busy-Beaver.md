@@ -20,7 +20,7 @@ For the sake of making the problem timeless, let's force the python version to b
 1. Is there a "biggest possible integer" that a program following these rules can output?
 2. If you are allowed to "cheat" and see the other players' answer before submitting your own, are you guaranteed victory? Or is it possible that the best you can do is tie?
 
-To answer the first, consider that there are only a finite number of acceptable characters that can be used in python code. I don't know the precise number, but it's certainly fewer than 200. So using the <a href="https://en.wikipedia.org/wiki/Rule_of_product">rule of product</a> from combinatorics, there are fewer than $200^1000$ texts of $1000$ characters in existence. This is a huge number, but even so it is _finite_. And so the number of those texts which happen to also be python codes is also finite.
+To answer the first, consider that there are only a finite number of acceptable characters that can be used in python code. I don't know the precise number, but it's certainly fewer than 200. So using the <a href="https://en.wikipedia.org/wiki/Rule_of_product">rule of product</a> from combinatorics, there are fewer than ${200}^{1000}$ texts of $1000$ characters in existence. This is a huge number, but even so it is _finite_. And so the number of those texts which happen to also be python codes is also finite.
 
 Because there are only a finite number of programs in $1000$ characters that satisfy the rules, there must be a _maximum_ integer outputted by all these valid programs. This answers the second question - if your opponent happens to write down a program that spits out this maximum integer, the best you can do is to copy that program and end the game in a tie.
 
