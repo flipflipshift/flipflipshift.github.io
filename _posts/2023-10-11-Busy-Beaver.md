@@ -28,12 +28,22 @@ But even if the other player doesn't have the maximum integer, it can still be e
 
 We'll call this game $BB(1000)$, where $1000$ indicates the allowed number of characters and $BB$ is a reference to the <a href="https://en.wikipedia.org/wiki/Busy_beaver">Busy Beaver problem</a>, upon which this game is based.
 
-Let's consider some futuristic hyper-intelligent AGI (artifical general intelligence). We'll see why you + AGI can outperform the lone AGI in the game of $BB(N)$ for very large $N$. 
+Let's consider some futuristic hyper-intelligent AGI (artifical general intelligence) that accept text prompts as input and spits out text as output. We'll see why you + AGI can outperform the lone AGI in the game of $BB(N)$ for very large $N$. 
 
 ---
-# A quick note about Turing Completeness
+# Playing against the AGI
 
-The <a href="https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis">Church-Turing thesis</a> is a conjecture that argues that all sufficiently advanced programming langauges can solve the exact same set of mathematical, well-defined problems. From BASIC to modern Python, all program languages you have ever used 
+We want to begin by translating this futuristic AGI into a single Python 3.11.6 file without imports. This might sounds absurd, but the fact that one can do this is a consequence of the <a href="https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis">Church-Turing thesis</a>. Roughly speaking, even an extremely simple programming language like BASIC can solve the same kinds of problems that any other programming language can solve (but the code will probably be way longer and take much longer to run!) Even alternative models of computation such as quantum computing are only speed-ups - they can still be simulated by BASIC with a much longer run time!
+
+Let $M$ be the number characters that our translation of this AGI into python code involves. $M$ will of course be extremely large.
+
+We now want to play the game $BB(2M)$ against this AGI. If this AGI really is as intelligent as we expect, 
+
+We now 
+
+any programming languages that contains some simple things like loops and recursion can do any computation that any other programming language, modern or futuristic, can achieve. It just
+
+The  is a conjecture that argues that all sufficiently advanced programming langauges can solve the exact same set of mathematical, well-defined problems. From BASIC to modern Python, all program languages you have ever used 
 
 In other words, any 
 
