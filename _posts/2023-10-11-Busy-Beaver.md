@@ -9,16 +9,26 @@ I've seen many opinion posts arguing one way or another. It is probably true tha
 This is not a real-world problem. But asking yourself _why_ a normal human is always able to add value in this problem is worth pondering.
 
 ---
-# The Busy-Beaver problem (simplified)
+# The Busy-Beaver game
 
 Consider the following game between two players:
 
-> Both players must write a python code in $1000$ or fewer characters that prints an integer. Whoever writes the program that prints the largest integer wins. Any runtime is allowed, as long as the program eventually stops. 
+**Both players must write a python code in 1000 characters that prints an integer. Whoever writes the program that prints the largest integer wins. Any runtime is allowed, as long as the program eventually stops.**
 
 For the sake of making the problem timeless, let's force the python version to be Python 3.11.6 and forbid any import statements. There are a couple questions I'd like you to ponder:
 
 1. Is there a "biggest possible integer" that a program following these rules can output?
-2. If one player is allowed to see the other players' answer before submitting their own, are they guaranteed victory or is it possible that they can only tie?
+2. If you are allowed to "cheat" and see the other players' answer before submitting your own, are you guaranteed victory? Or is it possible that the best you can do is tie?
+
+To answer the first, consider that there are only a finite number of acceptable characters that can be used in python code. I don't know the precise number, but it's certainly fewer than 200. So using the <a href="https://en.wikipedia.org/wiki/Rule_of_product">rule of product</a> from combinatorics, there are fewer than $200^1000$ texts of $1000$ characters in existence. This is a huge number, but even so it is _finite_. And so the number of those texts which happen to also be python codes is also finite.
+
+Because there are only a finite number of programs in $1000$ characters that satisfy the rules, there must be a _maximum_ integer outputted by all these valid programs. This answers the second question - if your opponent happens to write down a program that spits out this maximum integer, the best you can do is to copy that program and end the game in a tie.
+
+But even if the other player doesn't have the maximum integer, it can still be extremely difficult to improve their program. After all, that player will have likely combed through their program several times to look for any possible improvements before submission. You will have to find an improvement that they were unable to find.
+
+We'll call this game $BB(1000)$, where $1000$ indicates the allowed number of characters and $BB$ is a reference to the <a href="https://en.wikipedia.org/wiki/Busy_beaver">Busy beaver problem</a>, upon which this game is based.
+
+
 
 
 ### This is a header
