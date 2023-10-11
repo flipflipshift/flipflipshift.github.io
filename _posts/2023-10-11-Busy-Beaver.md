@@ -1,4 +1,4 @@
-## Mathematical proof that Humans + AI > AI
+## Where Human-augmented AI will always outperform lone AI
 
 
 ---
