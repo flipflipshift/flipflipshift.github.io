@@ -26,12 +26,15 @@ Because there are only a finite number of programs in $1000$ characters that sat
 
 But even if the other player doesn't have the maximum integer, it can still be extremely difficult to improve their program. After all, that player will have likely combed through their program several times to look for any possible improvements before submission. You will have to find an improvement that they were unable to find.
 
-We'll call this game $BB(1000)$, where $1000$ indicates the allowed number of characters and $BB$ is a reference to the <a href="https://en.wikipedia.org/wiki/Busy_beaver">Busy Beaver problem</a>, upon which this game is based. We'll now pair human-augmented AI against AI in the game of $BB(N)$ for $N$ very, very large.
+We'll call this game $BB(1000)$, where $1000$ indicates the allowed number of characters and $BB$ is a reference to the <a href="https://en.wikipedia.org/wiki/Busy_beaver">Busy Beaver problem</a>, upon which this game is based.
+
+Let's consider some futuristic hyper-intelligent AGI (artifical general intelligence). We'll see why you + AGI can outperform the lone AGI in the game of $BB(N)$ for very large $N$. 
 
 ---
-# How humans "out-meta" the AI
+# A quick note about Turing Completeness
 
-Let's consider some futuristic hyper-intelligent AGI (artifical general intelligence). We show how you + AGI can outperform the lone AGI in the game of $BB(N)$ for very large $N$.
+First of all, no matter what our technological advances are, 
+
 
 
 
