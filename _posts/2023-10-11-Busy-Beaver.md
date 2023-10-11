@@ -6,9 +6,20 @@ As this <a href="https://www.businessinsider.com/computers-beating-humans-at-adv
 
 I've seen many opinion posts arguing one way or another. It is probably true that for many tasks, AI will eventually be good enough to not require humans. But below I'll present a simple, well-defined problem, where human + AI will always outperform a lone AI.
 
-This is not an important problem by any means. But asking yourself _why_ a normal human is always able to add value in this problem is worth pondering.
+This is not a real-world problem. But asking yourself _why_ a normal human is always able to add value in this problem is worth pondering.
 
 ---
+# The Busy-Beaver problem (simplified)
+
+Consider the following game between two players:
+
+> Both players must write a python code in $1000$ or fewer characters that prints an integer. Whoever writes the program that prints the largest integer wins. Any runtime is allowed, as long as the program eventually stops. 
+
+For the sake of making the problem timeless, let's force the python version to be Python 3.11.6 and forbid any import statements. There are a couple questions I'd like you to ponder:
+
+1. Is there a "biggest possible integer" that a program following these rules can output?
+2. If one player is allowed to see the other players' answer before submitting their own, are they guaranteed victory or is it possible that they can only tie?
+
 
 ### This is a header
 
