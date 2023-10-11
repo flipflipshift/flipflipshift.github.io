@@ -1,4 +1,4 @@
-## Mathematical proof that Human Augmented AI beats lone AI
+## Mathematical proof that Human-Augmented AI beats lone AI
 
 
 ---
