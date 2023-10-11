@@ -15,7 +15,7 @@ Consider the following game between two players:
 
 **Both players must write a python code in 1000 characters that prints an integer. Whoever writes the program that prints the largest integer wins. Any runtime is allowed, as long as the program eventually stops.**
 
-For the sake of making the problem timeless, let's force the python version to be Python 3.11.6 and forbid any import statements. There are a couple questions I'd like you to ponder:
+For the sake of making the problem timeless, let's force the python version to be Python 3.11.6 and forbid any import statements. We'll also assume that additional memory can always be provided when required. There are a couple questions I'd like you to ponder:
 
 1. Is there a "biggest possible integer" that a program following these rules can output?
 2. If you are allowed to "cheat" and see the other players' answer before submitting your own, are you guaranteed victory? Or is it possible that the best you can do is tie?
@@ -26,7 +26,12 @@ Because there are only a finite number of programs in $1000$ characters that sat
 
 But even if the other player doesn't have the maximum integer, it can still be extremely difficult to improve their program. After all, that player will have likely combed through their program several times to look for any possible improvements before submission. You will have to find an improvement that they were unable to find.
 
-We'll call this game $BB(1000)$, where $1000$ indicates the allowed number of characters and $BB$ is a reference to the <a href="https://en.wikipedia.org/wiki/Busy_beaver">Busy beaver problem</a>, upon which this game is based.
+We'll call this game $BB(1000)$, where $1000$ indicates the allowed number of characters and $BB$ is a reference to the <a href="https://en.wikipedia.org/wiki/Busy_beaver">Busy beaver problem</a>, upon which this game is based. We'll now pair human-augmented AI against AI in the game of $BB(N)$ for $N$ very, very large.
+
+---
+# How humans "out-meta" the AI
+
+Let's consider some futuristic hyper-intelligent AGI (artifical general intelligence). We show how you + AGI can outperform the lone AGI in the game of $BB(N)$ for very large $N$.
 
 
 
