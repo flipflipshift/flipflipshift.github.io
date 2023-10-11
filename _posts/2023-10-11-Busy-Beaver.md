@@ -1,4 +1,4 @@
-## Where Human-augmented AI will always outperform lone AI
+## Mathematical proof that Human Augmented AI will always trump lone AI (in some settings)
 
 
 ---
