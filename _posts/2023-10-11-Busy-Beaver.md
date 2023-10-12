@@ -4,9 +4,9 @@ Once upon a time, it was believed that a computer could never beat the top playe
 
 As this <a href="https://www.businessinsider.com/computers-beating-humans-at-advanced-chess-2013-11">business insider</a> link posits, do all tasks have the same fate? Will we eventually get to the point where humans are completely unnecessary for all tasks?
 
-I've seen many opinion posts arguing one way or another. It is probably true that for many tasks, AI will eventually be good enough to not require humans. But below I'll present a simple, well-defined problem, where human + AI will always outperform a lone AI.
+I've seen many opinion posts arguing one way or another. It is probably true that for many tasks, AI will eventually be good enough to not require humans. But below I'll present a simple, well-defined task where human + AI will always outperform a lone AI.
 
-This is not a real-world problem. But asking yourself _why_ a normal human is always able to add value in this problem is worth pondering.
+This is not a real-world relevant task. But asking yourself _why_ a normal human is always able to add value in this problem is worth pondering.
 
 ---
 # The Busy-Beaver game
@@ -26,18 +26,25 @@ Because there are only a finite number of programs in $1000$ characters that sat
 
 But even if the other player doesn't have the maximum integer, it can still be extremely difficult to improve their program. After all, that player will have likely combed through their program several times to look for any possible improvements before submission. You will have to find an improvement that they were unable to find.
 
-We'll call this game $BB(1000)$, where $1000$ indicates the allowed number of characters and $BB$ is a reference to the <a href="https://en.wikipedia.org/wiki/Busy_beaver">Busy Beaver problem</a>, upon which this game is based.
+We'll call this game $BB(1000)$, where $1000$ indicates the allowed number of characters and $BB$ is a reference to the <a href="https://en.wikipedia.org/wiki/Busy_beaver">Busy Beaver problem</a>, upon which this game is based. We'll use $BB(N)$ to indicate the version of the game where $N$ characters are allowed.
 
-Let's consider some futuristic hyper-intelligent AGI (artifical general intelligence) that accept text prompts as input and spits out text as output. We'll see why you + AGI can outperform the lone AGI in the game of $BB(N)$ for very large $N$. 
+Let's consider some futuristic hyper-intelligent AI that is specifically designed to play the game $BB(n)$. In other words, it accepts an integer $n$ as input and spits out a Python 3.11.6 program of length $n$ that prints a very large integer. We'll show that you + AI can outperform the lone AI in the game of 
+$BB(N)$ when $N$ is very large.
+
 
 ---
-# Playing against the AGI
+# Playing against the AI
 
-We want to begin by translating this futuristic AGI into a single Python 3.11.6 file without imports. This might sounds absurd, but the fact that one can do this is a consequence of the <a href="https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis">Church-Turing thesis</a>. Roughly speaking, even an extremely simple programming language like BASIC can solve the same kinds of problems that any other programming language can solve (but the code will probably be way longer and take much longer to run!) Even alternative models of computation such as quantum computing are only speed-ups - they can still be simulated by BASIC with a much longer run time!
+We want to begin by translating this futuristic AI into a single Python 3.11.6 file without imports. This might sounds absurd, but the fact that one can do this is a consequence of the <a href="https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis">Church-Turing thesis</a>. Roughly speaking, even an extremely simple programming language like BASIC can solve the same kinds of problems that any other programming language can solve (but the code will be much longer). Even alternative models of computation such as quantum computing are only speed-ups - they can still be simulated by BASIC, but can take exponentially longer to run when they are.
 
-Let $M$ be the number characters that our translation of this AGI into python code involves. $M$ will of course be extremely large.
+Let $M$ be the number characters that our translation of this AI into python code involves. We now want to play the game $BB(2M)$ against this AI.
 
-We now want to play the game $BB(2M)$ against this AGI. If this AGI really is as intelligent as we expect, 
+The 
+
+exec(str)
+
+$M$ will of course be extremely large.
+ If this AGI really is as intelligent as we expect, 
 
 We now 
 
