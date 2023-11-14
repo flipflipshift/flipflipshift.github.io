@@ -61,27 +61,30 @@ $P'$ is a program with $2*M$ characters that eventually stops and outputs a numb
 ---
 # What if the AI is probabilistic?
 
+One might be tempted to believe that the "random" nature of many current Machine Learning algorithms can come to the rescue here since we have not built randomness into the algorithm. We can easily work around this by having the program print all possible outputs of the AI on input $2M$ (viewed as a single, long, integer). All we have to do is know the maximum amount of random information that will be required, and we can have our program loop through every possibility. Note that this does not impact how long it takes for us to give our answer to the $BB(2M)$ game - we just have to write the program, not run it.
 
+---
+# Why can't the AI do this strategy?
 
-### This is a header
+This is a good exercise, and it also proves that the AI will never be perfect at this game for large integers. Informally, this would require the program to recursively call itself ad infinitum, and you can prove via a proof by contradiction that there can never be a workaround for this.
 
-#### Some T-SQL Code
+---
+# Okay, but how about another AI? Can't it do this?
 
-```tsql
-SELECT This, [Is], A, Code, Block -- Using SSMS style syntax highlighting
-    , REVERSE('abc')
-FROM dbo.SomeTable s
-    CROSS JOIN dbo.OtherTable o;
-```
+Forget AI, even a basic program can do this, right? I've just given you an algorithm to beat the AI; of course a program can follow this algorithm as well. But viewing that combination of AI + program as a single AI, you can again defeat it for large $N$ using the above trick.
 
-#### Some PowerShell Code
+---
+# Okay, but what if modify the AI to do something like this strategy whenever the input is bigger than its length?
 
-```powershell
-Write-Host "This is a powershell Code block";
+No matter how "meta" the AI playing this game is, you can always "out-meta" the strategy by one level with the exact same trick.
 
-# There are many other languages you can use, but the style has to be loaded first
+---
+# Is this an argument that we can never simulate the human brain?
 
-ForEach ($thing in $things) {
-    Write-Output "It highlights it using the GitHub style"
-}
-```
+Not completely - if we can ever upload your brain into a simulation, then one of the following is true:
+1. There is a chance the brain spits out a "bad piece of code" which, for instance, never actually stops or
+2. You + your simulated brain outperforms you alone.
+
+I'm not much of a philosopher, so I won't speak much about point (2), but it's interesting to think about.
+
+The key takeaway here is that there exists at least one problem where you can strictly outperform any AI whose code you're able to see (even if you don't understand it).
