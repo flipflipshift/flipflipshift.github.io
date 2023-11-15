@@ -34,7 +34,10 @@ Let's consider some futuristic hyper-intelligent AI that is specifically designe
 ---
 # Playing against the AI
 
-We want to begin by translating this futuristic AI into a single Python 3.11.6 file without imports. This might sounds absurd, but the fact that one can do this is a consequence of the <a href="https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis">Church-Turing thesis</a>. Roughly speaking, even an extremely simple programming language like BASIC can solve the same kinds of problems that any other programming language can solve (but the code will be much longer). Even alternative models of computation such as quantum computing are only speed-ups - they can still be simulated by BASIC, but can take exponentially longer to run when they are. We will asssume for now that randomness is not involved in the AI, then discuss below how to deal with randomness if it is involved.
+We want to begin by translating this futuristic AI into a single Python 3.11.6 file without imports. This might sounds absurd, but this is a consequence of the <a href="https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis">Church-Turing thesis</a>. Roughly speaking, even an extremely simple programming language like BASIC can solve the same kinds of problems that any other programming language can solve (but the code will be much longer). Even alternative models of computation such as quantum computing are only speed-ups - they can still be simulated by BASIC, but can take exponentially longer to run when they are. Moreover, we can write a program that does this conversion automatically so we won't have to actually understand the code of the AI.
+
+
+We will asssume for now that randomness is not involved in the AI, then discuss below how to deal with randomness if it is involved.
 
 When we do this translation, we will structure it in a manner such that key method is titled:
 ```python
@@ -107,6 +110,8 @@ while(not found):
 This python program prints the first counter-example to  <a href="https://en.wikipedia.org/wiki/Goldbach%27s_conjecture">Goldbach's conjecture</a>. To determine if it runs forever or not, you would need to resolve Goldbach's conjecture, which remains unanswered after nearly 300 years of effort by many of the top mathematicians in the world. 
 
 So we must assume that the AI is desigened to always provide a valid answer to the game, choosing to risk losing by writing an inferior program which it knows is valid rather than risk getting disqualified by returning a program it isn't sure is valid or not.
+
+We are also assuming that the Church-Turing thesis holds in order to translate the AI into python code. This thesis has not been proven because it is hard to even formalize the statement, but the majority opinion is that the thesis holds. In fact, I haven't been able to find anything even speculative about futuristic models of computation that don't satisfy the Church-Turing thesis. Even futuristic quantum computers satisfy the Church-Turing thesis (as mentioned above).
 
 ---
 # Is this all an argument that we can never simulate the human brain?
