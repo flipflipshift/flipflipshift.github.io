@@ -13,14 +13,14 @@ This is not a real-world relevant task. But asking yourself _why_ a normal human
 
 Consider the following game between two players:
 
-**Both players must write a python code in 1000 characters that prints an integer. Whoever writes the program that prints the largest integer wins. Any runtime is allowed, as long as the program eventually stops.**
+**Both players must write a Python code in 1000 characters that prints an integer. Whoever writes the program that prints the largest integer wins. Any runtime is allowed, as long as the program eventually stops.**
 
-For the sake of making the problem timeless, let's force the python version to be Python 3.11.6 and forbid any import statements. We'll also assume that additional memory can always be provided when required. There are a couple questions I'd like you to ponder:
+For the sake of making the problem timeless, let's force the Python version to be Python 3.11.6 and forbid any import statements. We'll also assume that additional memory can always be provided when required. There are a couple questions I'd like you to ponder:
 
 1. Is there a "biggest possible integer" that a program following these rules can output?
 2. If you are allowed to "cheat" and see the other players' answer before submitting your own, are you guaranteed victory? Or is it possible that the best you can do is tie?
 
-To answer the first, consider that there are only a finite number of acceptable characters that can be used in python code. I don't know the precise number, but let's say it's fewer than 200. So using the <a href="https://en.wikipedia.org/wiki/Rule_of_product">rule of product</a> from combinatorics, there are fewer than ${200}^{1000}$ texts of 1000 characters in existence. This is a huge number, but even so it is _finite_. And so the number of those texts which happen to also be python codes is also finite.
+To answer the first, consider that there are only a finite number of acceptable characters that can be used in Python code. I don't know the precise number, but let's say it's fewer than 200. So using the <a href="https://en.wikipedia.org/wiki/Rule_of_product">rule of product</a> from combinatorics, there are fewer than ${200}^{1000}$ texts of 1000 characters in existence. This is a huge number, but even so it is _finite_. And so the number of those texts which happen to also be Python codes is also finite.
 
 Because there are only a finite number of programs in $1000$ characters that satisfy the rules, there must be a _maximum_ integer outputted by all these valid programs. This answers the second question - if your opponent happens to write down a program that spits out this maximum integer, the best you can do is to copy that program and end the game in a tie. So the answer to the second question is "no, it is possible that at best you can tie".
 
@@ -40,7 +40,7 @@ We want to begin by translating this futuristic AI into a single Python 3.11.6 f
 We will asssume for now that randomness is not involved in the AI, then discuss below how to deal with randomness if it is involved.
 
 When we do this translation, we will structure it in a manner such that key method is titled:
-```python
+```Python
 run(n):
  #return a string that is n characters long
  #string must be readable as a Python 3.11.6 code without imports that eventually stops and prints an integer.
@@ -48,14 +48,14 @@ run(n):
 Let $P$ denote this program and let $M$ denote the number of its characters. We now want to play the game $BB(2M)$ against this AI. Our strategy will be very simple. One option could be to run the AI on $2M$, waiting a long time for the program to finish, then carefully comb through the entire long program to find any small area of improvement that the AI didn't already catch. But if the AI is really good, it could be extremely hard to do so.
 
 Our strategy will not involve actually running the AI on $2M$ at all. Or at least, not directly. Let's say that at the bottom of program $P$ we write:
-```python
+```Python
 x=2*M
 exec(run(x))
 print("0")
 ```
 (remember $M$ is the number of characters of $P$; it is not a variable).
 
-The exec method in Python accepts a string as input and attempt to run it as python code. So these last few lines will call 'run' on $2M$ (which returns the AI's best answer for the game of $BB(2M)$), then executes that actual program (which prints a very, very large integer), and finally appends a $0$ to the end, making the output 10 times larger than the output of the AI's program.
+The exec method in Python accepts a string as input and attempt to run it as Python code. So these last few lines will call 'run' on $2M$ (which returns the AI's best answer for the game of $BB(2M)$), then executes that actual program (which prints a very, very large integer), and finally appends a $0$ to the end, making the output 10 times larger than the output of the AI's program.
 
 Including newlines, this adds $29+\log_{10}(M)$ characters to $P$, so the total program length is much less than $2M$. We can pad it out with meaningless code to make it exactly $2M$. Call this program $P'$.
 
@@ -89,7 +89,7 @@ One big assumption in all this is that the AI will give an acceptable answer whe
 So one might ask - "Can't we just check if the program the AI outputs is valid? And if it's not, then we can simply return 'print(1)' and win?". The trouble is that to do so, we would have to determine if the outputted program will run forever or stop, which is something that is <a href="https://en.wikipedia.org/wiki/Halting_problem">famously impossible to do in general</a>. 
 
 To illustrate why this should be the case, let's say the AI spits out the following program:
-```python
+```Python
 def is_prime(k):
  if k<2:
   return False
@@ -108,11 +108,11 @@ while(not found):
    break
  n+=2
 ```
-This python program prints the first counter-example to  <a href="https://en.wikipedia.org/wiki/Goldbach%27s_conjecture">Goldbach's conjecture</a>. To determine if it runs forever or not, you would need to resolve Goldbach's conjecture, which remains unanswered after nearly 300 years of effort by many of the top mathematicians in the world. 
+This Python program prints the first counter-example to  <a href="https://en.wikipedia.org/wiki/Goldbach%27s_conjecture">Goldbach's conjecture</a>. To determine if it runs forever or not, you would need to resolve Goldbach's conjecture, which remains unanswered after nearly 300 years of effort by many of the top mathematicians in the world. 
 
 So we must assume that the AI is desigened to always provide a valid answer to the game, choosing to risk losing by writing an inferior program which it knows is valid rather than risk getting disqualified by returning a program it isn't sure is valid or not.
 
-We are also assuming that the Church-Turing thesis holds in order to translate the AI into python code. This thesis has not been proven because it is hard to even formalize the statement, but the majority opinion is that the thesis holds. In fact, I haven't been able to find anything even speculative about futuristic models of computation that don't satisfy the Church-Turing thesis. Even futuristic quantum computers satisfy the Church-Turing thesis (as mentioned above).
+We are also assuming that the Church-Turing thesis holds in order to translate the AI into Python code. This thesis has not been proven because it is hard to even formalize the statement, but the majority opinion is that the thesis holds. In fact, I haven't been able to find anything even speculative about futuristic models of computation that don't satisfy the Church-Turing thesis. Even futuristic quantum computers satisfy the Church-Turing thesis (as mentioned above).
 
 ---
 # Is this all an argument that we can never simulate the human brain?
