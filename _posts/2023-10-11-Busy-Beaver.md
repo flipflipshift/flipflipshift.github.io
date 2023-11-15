@@ -1,4 +1,4 @@
-## Mathematical proof that Human-Augmented AI beats lone AI
+## Where Human-Augmented AI will always beat lone AI
 
 Once upon a time, it was believed that a computer could never beat the top players in chess. Today chess programs are so advanced that when they go head to head, assisstance from the top players is completely irrelevant.
 
@@ -35,7 +35,7 @@ $BB(N)$ when $N$ is very large.
 ---
 # Playing against the AI
 
-We want to begin by translating this futuristic AI into a single Python 3.11.6 file without imports. This might sounds absurd, but the fact that one can do this is a consequence of the <a href="https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis">Church-Turing thesis</a>. Roughly speaking, even an extremely simple programming language like BASIC can solve the same kinds of problems that any other programming language can solve (but the code will be much longer). Even alternative models of computation such as quantum computing are only speed-ups - they can still be simulated by BASIC, but can take exponentially longer to run when they are.
+We want to begin by translating this futuristic AI into a single Python 3.11.6 file without imports. This might sounds absurd, but the fact that one can do this is a consequence of the <a href="https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis">Church-Turing thesis</a>. Roughly speaking, even an extremely simple programming language like BASIC can solve the same kinds of problems that any other programming language can solve (but the code will be much longer). Even alternative models of computation such as quantum computing are only speed-ups - they can still be simulated by BASIC, but can take exponentially longer to run when they are. We will asssume for now that randomness is not involved in the AI, then discuss below how to deal with randomness if it is involved.
 
 When we do this translation, we will structure it in a manner such that key method is titled:
 ```python
@@ -79,12 +79,21 @@ Forget AI, even a basic program can do this, right? I've just given you an algor
 No matter how "meta" the AI playing this game is, you can always "out-meta" the strategy by one level with the exact same trick.
 
 ---
-# Is this an argument that we can never simulate the human brain?
+# Caveats
 
-Not completely - if we can ever upload your brain into a simulation, then one of the following is true:
+One big assumption in all this is that the AI will give an acceptable answer when playing the game. If the AI does not spit out a valid Python program, then our strategy will fail as well and we are both disqualified.
+
+So one might ask - "Can't we just check if the program the AI outputs is valid? And if it's not, then we can simply return 'print(1)' and win?". The trouble is that to do so, we would have to determine if the outputted program will run forever or stop, which is something that is <a href="[https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis](https://en.wikipedia.org/wiki/Halting_problem)https://en.wikipedia.org/wiki/Halting_problem">famously impossible to do in general</a>. In fact, you can see why with this very problem - if a program could answer the Halting problem, then it could give a best answer to $BB(N)$ (try to see why yourself), which contradicts our ability to always do better.
+
+---
+# Is this all an argument that we can never simulate the human brain?
+
+Not completely - if it turns out that we _can_ upload your brain into a simulation, then one of the following is true:
 1. There is a chance the brain spits out a "bad piece of code" which, for instance, never actually stops or
 2. You + your simulated brain outperforms you alone.
 
-I'm not much of a philosopher, so I won't speak much about point (2), but it's interesting to think about.
+I'm not much of a philosopher, so I won't speak much about point (2), but it's interesting to think about. There are probably some fun paradoxes you can come up with that involve pairing a human with a simulation of their brain.
 
-The key takeaway here is that there exists at least one problem where you can strictly outperform any AI whose code you're able to see (even if you don't understand it).
+The key takeaway here is that there exists at least one problem where you can strictly outperform any AI whose code you're able to see (even if the code itself is incomprehensible).
+
+
