@@ -106,6 +106,8 @@ while(not found):
 ```
 This python program prints the first counter-example to  <a href="https://en.wikipedia.org/wiki/Goldbach%27s_conjecture">Goldbach's conjecture</a>. To determine if it runs forever or not, you would need to resolve Goldbach's conjecture, which remains unanswered after nearly 300 years of effort by many of the top mathematicians in the world. 
 
+So we must assume that the AI is desigened to always provide a valid answer to the game, choosing to risk losing by writing an inferior program which it knows is valid rather than risk getting disqualified by returning a program it isn't sure is valid or not.
+
 ---
 # Is this all an argument that we can never simulate the human brain?
 
