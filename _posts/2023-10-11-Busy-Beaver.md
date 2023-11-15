@@ -82,7 +82,29 @@ No matter how "meta" the AI playing this game is, you can always "out-meta" the 
 
 One big assumption in all this is that the AI will give an acceptable answer when playing the game. If the AI does not spit out a valid Python program, then our strategy will fail as well and we are both disqualified.
 
-So one might ask - "Can't we just check if the program the AI outputs is valid? And if it's not, then we can simply return 'print(1)' and win?". The trouble is that to do so, we would have to determine if the outputted program will run forever or stop, which is something that is <a href="[https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis](https://en.wikipedia.org/wiki/Halting_problem)https://en.wikipedia.org/wiki/Halting_problem">famously impossible to do in general</a>. In fact, you can see why through the lens of this very problem -- if a program could answer the Halting problem, then it could give a best answer to $BB(n)$ (try to see why yourself), which contradicts our ability to always do better for large $n$.
+So one might ask - "Can't we just check if the program the AI outputs is valid? And if it's not, then we can simply return 'print(1)' and win?". The trouble is that to do so, we would have to determine if the outputted program will run forever or stop, which is something that is <a href="https://en.wikipedia.org/wiki/Halting_problem">famously impossible to do in general</a>. 
+
+To illustrate why this should be the case, let's say the AI spits out the following program:
+```python
+def is_prime(k):
+ if k<2:
+  return False
+ for i in range(2,k):
+  if k%i==0:
+   return False
+ return True
+
+n=4
+found=False
+while(not found):
+ for i in range(n):
+  if is_prime(i) and is_prime(n-i):
+   found = True
+   print(n, end='')
+   break
+ n+=2
+```
+This python program prints the first counter-example to  <a href="https://en.wikipedia.org/wiki/Goldbach%27s_conjecture">Goldbach's conjecture</a>. To determine if it runs forever or not, you would need to resolve Goldbach's conjecture, which remains unanswered after nearly 300 years of effort by many of the top mathematicians in the world. 
 
 ---
 # Is this all an argument that we can never simulate the human brain?
