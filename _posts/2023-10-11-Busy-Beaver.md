@@ -22,14 +22,13 @@ For the sake of making the problem timeless, let's force the python version to b
 
 To answer the first, consider that there are only a finite number of acceptable characters that can be used in python code. I don't know the precise number, but let's say it's fewer than 200. So using the <a href="https://en.wikipedia.org/wiki/Rule_of_product">rule of product</a> from combinatorics, there are fewer than ${200}^{1000}$ texts of 1000 characters in existence. This is a huge number, but even so it is _finite_. And so the number of those texts which happen to also be python codes is also finite.
 
-Because there are only a finite number of programs in $1000$ characters that satisfy the rules, there must be a _maximum_ integer outputted by all these valid programs. This answers the second question - if your opponent happens to write down a program that spits out this maximum integer, the best you can do is to copy that program and end the game in a tie.
+Because there are only a finite number of programs in $1000$ characters that satisfy the rules, there must be a _maximum_ integer outputted by all these valid programs. This answers the second question - if your opponent happens to write down a program that spits out this maximum integer, the best you can do is to copy that program and end the game in a tie. So the answer to the second question is "no, it is possible that at best you can tie".
 
 But even if the other player doesn't have the maximum integer, it can still be extremely difficult to improve their program. After all, that player will have likely combed through their program several times to look for any possible improvements before submission. You will have to find an improvement that they were unable to find.
 
-We'll call this game $BB(1000)$, where $1000$ indicates the allowed number of characters and $BB$ is a reference to the <a href="https://en.wikipedia.org/wiki/Busy_beaver">Busy Beaver problem</a>, upon which this game is based. We'll use $BB(N)$ to indicate the version of the game where $N$ characters are allowed.
+We'll call this game $BB(1000)$, where $1000$ indicates the allowed number of characters and $BB$ is a reference to the <a href="https://en.wikipedia.org/wiki/Busy_beaver">Busy Beaver problem</a>, upon which this game is based. We'll use $BB(n)$ to indicate the version of the game where $n$ characters are allowed.
 
-Let's consider some futuristic hyper-intelligent AI that is specifically designed to play the game $BB(n)$. In other words, it accepts an integer $n$ as input and spits out a Python 3.11.6 program of length $n$ that prints a very large integer. We'll show that you + AI can outperform the lone AI in the game of 
-$BB(N)$ when $N$ is very large.
+Let's consider some futuristic hyper-intelligent AI that is specifically designed to play the game $BB(n)$. In other words, it accepts an integer $n$ as input and spits out a Python 3.11.6 program of length $n$ that prints a very large integer. We'll show that you + AI can outperform the lone AI in the game of $BB(n)$ when $n$ is very large.
 
 
 ---
@@ -83,7 +82,7 @@ No matter how "meta" the AI playing this game is, you can always "out-meta" the 
 
 One big assumption in all this is that the AI will give an acceptable answer when playing the game. If the AI does not spit out a valid Python program, then our strategy will fail as well and we are both disqualified.
 
-So one might ask - "Can't we just check if the program the AI outputs is valid? And if it's not, then we can simply return 'print(1)' and win?". The trouble is that to do so, we would have to determine if the outputted program will run forever or stop, which is something that is <a href="[https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis](https://en.wikipedia.org/wiki/Halting_problem)https://en.wikipedia.org/wiki/Halting_problem">famously impossible to do in general</a>. In fact, you can see why with this very problem - if a program could answer the Halting problem, then it could give a best answer to $BB(N)$ (try to see why yourself), which contradicts our ability to always do better.
+So one might ask - "Can't we just check if the program the AI outputs is valid? And if it's not, then we can simply return 'print(1)' and win?". The trouble is that to do so, we would have to determine if the outputted program will run forever or stop, which is something that is <a href="[https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis](https://en.wikipedia.org/wiki/Halting_problem)https://en.wikipedia.org/wiki/Halting_problem">famously impossible to do in general</a>. In fact, you can see why through the lens of this very problem -- if a program could answer the Halting problem, then it could give a best answer to $BB(n)$ (try to see why yourself), which contradicts our ability to always do better for large $n$.
 
 ---
 # Is this all an argument that we can never simulate the human brain?
