@@ -42,8 +42,8 @@ We will asssume for now that randomness is not involved in the AI, then discuss 
 When we do this translation, we will structure it in a manner such that key method is titled:
 ```python
 run(n):
- #return a string that is n characters long
- #string must be readable as a python 3.11.6 code without imports that eventually stops and prints a very large integer.
+ #return a string that is n characters long that
+ #string must be readable as a Python 3.11.6 code without imports that eventually stops and prints an integer.
 ```
 Let $P$ denote this program and let $M$ denote the number of its characters. We now want to play the game $BB(2M)$ against this AI. Our strategy will be very simple. One option could be to run the AI on $2M$, waiting a long time for the program to finish, then carefully comb through the entire long program to find any small area of improvement that the AI didn't already catch. But if the AI is really good, it could be extremely hard to do so.
 
