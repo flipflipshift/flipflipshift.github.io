@@ -64,7 +64,13 @@ $P'$ is a program with $2*M$ characters that eventually stops and outputs a numb
 ---
 # What if the AI is probabilistic?
 
-One might be tempted to believe that the "random" nature of many current Machine Learning algorithms can come to the rescue here since we have not built randomness into the algorithm. We can easily work around this by having the program print all possible outputs of the AI on input $2M$ (viewed as a single, long, integer). All we have to do is know the maximum amount of random information that will be required, and we can have our program loop through every possibility. Note that this does not impact how long it takes for us to give our answer to the $BB(2M)$ game - we just have to write the program, not run it.
+One might be tempted to believe that the "random" nature of many current Machine Learning algorithms can come to the rescue here since we have not built randomness into the algorithm. Furthermore, while the limits have computation has not changed since the very beginning, the ability to generate "random-seeming" pseudo-random bits _has_ improved and should continues to improve in the future.
+
+One option around this is to "try every possibility" of what the random calls can return, and print all the integers together. This is a deterministic solution that would significantly outperform the AI. But if the probability the AI takes more than $k$ steps to stop is greater than $0$ for all $k$, then we have a problem. Some might not consider such an AI legitimate as it can take arbitrarily long to spit it out anwswer, but in my view it should still be a legitimate player as long as that probability goes to $0$ as $k$ goes to infinity. In this case, simulating all possible outputs would have infinite run-time and therefore be unacceptable.
+
+A workaround for this would be to first simulate the AI 99 times, with a slight tweak in the code that prints the output of every call for a random bit. We can then have our (deterministic) python code simulate the AI 99 times in a manner that copies the performance by using the same random bits. This process will win against the AI at least 99% of the time.
+
+To recap: if the probabilistic AI has some upper-bound on its run-time, we can win 100% of the time without ever simulating the AI. Without that upper-bound, due to the AI having a potentially superior random function, we have to actually simulate the AI some number of times to copy its random behavior.
 
 ---
 # Why can't the AI do this strategy?
