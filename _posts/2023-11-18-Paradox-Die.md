@@ -4,7 +4,7 @@ Which of the following do you think is bigger?
 
 A: The expected number of rolls of a fair die until you roll 10 6s in a row, given that all rolls were even
 
-B: The expected number of rolls of a fair die until you roll the 9th 6 (not necessarily in a row), given that all rolls are even.
+B: The expected number of rolls of a fair die until you roll the 9th 6 (not necessarily in a row), given that all rolls were even.
 
 If you're unfamiliar with conditional expectation, think of it this way: first perform a _lot_ of sequences of die rolls, stopping each sequence when you roll 10 6s in a row. Throw out all the sequences that contain an odd roll. The average number of rolls in the remaining sequences should be close to 'A'. Likewise, perform a bunch of sequences of die rolls that each stop at the 9th 6. Throw out all the sequences that contain an odd roll. The average number of rolls of the remaining sequences should be close to 'B'.
 
