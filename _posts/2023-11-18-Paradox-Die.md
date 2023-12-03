@@ -13,5 +13,7 @@ I asked <a href="https://www.reddit.com/r/math/comments/17qcx8u/the_paradox_that
 But the correct answer is actually 'B'. What on earth is going on?
 
 ---
-# Some basics
+# Some probability basics
+
+By now
 
