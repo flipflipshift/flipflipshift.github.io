@@ -16,7 +16,7 @@ But the correct answer is actually $B$. What on earth is going on?
 ---
 # A quick verification
 
-Before we proceed, let's write some code to estimate $A$ and $B$. The only goal here is to be as unambiguous as possible, so the code will be heavily unoptimized in both run-time and length.
+Before we proceed, let's write some code to estimate $A$ and $B$. The only goal here is to be as unambiguous as possible, so the code will be almost comically unoptimized in both run-time and length.
 
 ```Python
 import random
@@ -105,15 +105,15 @@ In this subsection, we'll answer the followng questions:
 
 Spoiler: The answers are 6, 3, 1.5, and approximately 3.
 
-For (1), let's first find the probability that it takes exactly $k$ rolls to see the first $6$. This means the first $k-1$ rolls were not $6$ and roll $k$ was $6$. The probability that a $D6$ rolls a $6$ is $\frac{1}{6}$ and the probability it does not is $\frac{5}{6}$. 
+For (1), let's first find the probability that it takes exactly $k$ rolls to see the first $6$. This means the first $k-1$ rolls were not $6$ and roll $k$ was $6$. 
 
-Following the <a href="https://brilliant.org/wiki/probability-rule-of-product/">rule of product</a> for independent probabilities, we get:
+The probability that a $D6$ rolls a $6$ is $\frac{1}{6}$ and the probability it does not is $\frac{5}{6}$. Following the <a href="https://brilliant.org/wiki/probability-rule-of-product/">rule of product</a> for independent probabilities, we get:
 
-$\text{Pr($k$ rolls until first $6$)}=\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
+$\text{Pr(exactly $k$ rolls until first $6$)}=\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
 
 So the <a href="https://online.stat.psu.edu/stat500/lesson/3/3.2/3.2.1">formula for expectation</a> gives:
 
-$E[\text{number of rolls until the first 6}]=\sum\limits_{k=0}^\infty k*\text{Pr($k$ rolls until first $6$)}=\sum\limits_{k=0}^\infty k\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
+$E[\text{# rolls until the first 6}]=\sum\limits_{k=0}^\infty k*\text{Pr(exactly $k$ rolls until first $6$)}=\sum\limits_{k=0}^\infty k\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
 
 
 
