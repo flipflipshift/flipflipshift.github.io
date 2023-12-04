@@ -92,26 +92,17 @@ The 100,000s in the last two lines represent the number of sequences being rolle
 The estimate for $A$ should be close to $2.727$ and the estimate for B should be close to $3.000$. We will later see that the exact value for $A$ is $30/11$ and the exact value for $B$ is $3$, but it is helpful to first unambiguously verify that $B$ is greater than $A$ (and ensure that we are on the same page of what $A$ and $B$ mean) before diving into the possibly unintuitive math.
 
 ---
-# The case of one 6
+# Primer on geometric distributions
 
-For convenience, we'll use $D6$ to refer to a fair $6$-sided die with sides labeled $1-6$ and $D3$ to refer to a fair $3$-sided die with sides labeled $2,4,6$.
+We'll begin by calculating the expected number of rolls of a die to see the first $6$. If you know how to quickly solve this problem, you can skip this subsection.
 
-In this subsection, we'll answer the followng questions:
+To do so, we first find the probability that it takes exactly $k$ rolls to see the first $6$. This means the first $k-1$ rolls were not $6$ and roll $k$ was $6$. 
 
-1. What is the expected number of rolls of a $D6$ until we see the first 6?
-2. What is the expected number of rolls of a $D3$ until we see the first $6$?
-3. What is the expected number of rolls of a $D6$ until we see the first $6$, given that all rolls are even?
-4. What is the expected number of rolls of a $D6$ until we see the first $6$, given that all rolls until the first 6 were even and when we continued to roll the die until the one billionth roll, we still saw all evens?
-
-Spoiler: The answers are 6, 3, 1.5, and approximately 3.
-
-For (1), let's first find the probability that it takes exactly $k$ rolls to see the first $6$. This means the first $k-1$ rolls were not $6$ and roll $k$ was $6$. 
-
-The probability that a $D6$ rolls a $6$ is $\frac{1}{6}$ and the probability it does not is $\frac{5}{6}$. Following the <a href="https://brilliant.org/wiki/probability-rule-of-product/">rule of product</a> for independent probabilities, we get:
+The probability that a die rolls a $6$ is $\frac{1}{6}$ and the probability it does not is $\frac{5}{6}$. Following the <a href="https://brilliant.org/wiki/probability-rule-of-product/">rule of product</a> for independent probabilities, we get:
 
 $\text{Pr(First $6$ on roll $k$)}=\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
 
-We can now get a formula for the expected number of rolls of a $D6$ until we see the first $6$. The <a href="https://online.stat.psu.edu/stat500/lesson/3/3.2/3.2.1">formula for expectation</a> gives:
+We can now get a formula for the expected number of rolls of a die until we see the first $6$. The <a href="https://online.stat.psu.edu/stat500/lesson/3/3.2/3.2.1">formula for expectation</a> gives:
 
 $E[\text{# rolls until 6}]=\sum\limits_{k=0}^\infty k*\text{Pr(First $6$ on roll $k$)}=\sum\limits_{k=0}^\infty k\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
 
@@ -121,22 +112,39 @@ $\sum\limits_{k=0}^\infty k x^{k-1}=\frac{1}{(1-x)^2}$
 
 This can be obtained by starting with the <a href="https://www.khanacademy.org/math/ap-calculus-bc/bc-series-new/bc-10-2/a/proof-of-infinite-geometric-series-formula">formula for geometric series</a> $\sum\limits_{k=0}^\infty x^{k}=\frac{1}{1-x}$ and taking the derivative of both sides (if you remember calculus) or squaring both sides (if you're very good at algebra).
 
-Plugging in, we have $E[\text{# rolls until 6}]=\frac{1}{6}\frac{1}{(1-\frac{5}{6})^2}=6. 
+Plugging in, we have 
+$E[\text{# rolls until 6}]=\frac{1}{6}\frac{1}{(1-\frac{5}{6})^2}=6$. 
+And we are done. Sort of.
 
-And we are done with (1). Sort of. Let's try that again, this time using an intuitive trick from Markov chains. We'll use "average" and "expected" interchangably as the former is more colloquial and we are going to be a bit informal here.
+Let's try that again, this time using an intuitive trick from Markov chains. We'll use "average" and "expected" interchangably as the former is more colloquial and we are going to be a bit informal here.
 
 Let $x$ be the average number of rolls until we see the first $6$. Let's roll the die once. With probability $\frac{1}{6}$, we rolled a $6$ and can stop. With probability 
-$\frac{5}{6}$, we didn't roll a $6$ and are then \textit{still} an average of $x$ steps away from a $6$. 
+$\frac{5}{6}$, we didn't roll a $6$ and are then _still_ an average of $x$ steps away from a $6$. 
 
-So with probability $1/6$, we are in a scenario where we take $1$ roll to see a $6$ and in the remaining probability $5/6$, it will take an average of $x+1$ steps to see a $6$. So the average number of rolls until we see the first $6$ is $\frac{1}{6}*1+\frac{5}{6}(x+1)$. But the average is also $x$! This gives us the algebra equation:
+So with probability $1/6$, we are in a scenario where we take $1$ roll to see a $6$ and in the remaining probability $5/6$, it will take an average of $x+1$ steps to see a $6$. So the average number of rolls until we see the first $6$ is $\frac{1}{6}(1)+\frac{5}{6}(x+1)$. But the average is also $x$! This gives us the algebra equation:
 
 $x=\frac{1}{6}+\frac{5}{6}(x+1)$
 
 that gives $x=6$ when solving for $x$.
 
-For (2), the answer is 3 for the exact same reason. The general principle is this: **If an event has probability $p$ of success, the average number of trials until success is $\frac{1}{p}$**
+Let's generalize now. Let's say we have some experiment that has fixed probability $p$ of success. We repeat the experiment until it succeeds. Then if $x$ is the 
+expected number of trials until success, we have:
 
+$x=p(1)+(1-p)(x+1)\implies x=p+x-px+1-p \implies px=1\implies x=1/p$.
 
+Probability distributions of this form are called _geometric distributions_. 
 
+In this case, the experiment was rolling a die and success was defined by seeing a $6$, so it is a _geometric distribution with success rate_ $\frac{1}{6}$. And so the expected number of trials until sucess is $\frac{1}{\frac{1}{6}}=6$.
+
+---
+# Rolls until first 6, given all even
+
+In this section, we will use $D6$ to refer to a fair $6$-sided die with sides labeled $1-6$ and $D3$ to refer to a fair $3$-sided die with sides labeled $2,4,6$. We will aim to answer the following three questions:
+
+1. What is the expected number of rolls of a $D3$ until we see the first $6$?
+2. What is the expected number of rolls of a $D6$ until we see the first $6$, given that all rolls are even?
+3. What is the expected number of rolls of a $D6$ until we see the first $6$, given that all rolls until the first 6 were even and when we continued to roll the die until the one billionth roll, we still saw all evens?
+
+For the first question, we have a geometric distribution of success rate $\frac{1}{3}$, so the expected number of trials until success is $\frac{1}{\frac{1}{3}}=3$.
 
 
