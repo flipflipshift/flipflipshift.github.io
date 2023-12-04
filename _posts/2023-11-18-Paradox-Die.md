@@ -134,5 +134,9 @@ $x=\frac{1}{6}+\frac{5}{6}(x+1)$
 
 that gives $x=6$ when solving for $x$.
 
+For (2), the answer is 3 for the exact same reason. The general principle is this: **If an event has probability $p$ of success, the average number of trials until success is $\frac{1}{p}$**
+
+
+
 
 
