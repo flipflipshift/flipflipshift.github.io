@@ -104,11 +104,11 @@ $\text{Pr(First $6$ on roll $k$)}=\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
 
 We can now get a formula for the expected number of rolls of a die until we see the first $6$. The <a href="https://online.stat.psu.edu/stat500/lesson/3/3.2/3.2.1">formula for expectation</a> gives:
 
-$E[\text{# rolls until 6}]=\sum\limits_{k=0}^\infty k*\text{Pr(First $6$ on roll $k$)}=\sum\limits_{k=0}^\infty k\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
+$E[\text{# rolls until 6}]=\sum\limits_{k=1}^\infty k*\text{Pr(First $6$ on roll $k$)}=\sum\limits_{k=1}^\infty k\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
 
 Now we'll use the following fact: for $-1<x<1$:
 
-$\sum\limits_{k=0}^\infty k x^{k-1}=\frac{1}{(1-x)^2}$
+$\sum\limits_{k=1}^\infty k x^{k-1}=\frac{1}{(1-x)^2}$
 
 This can be obtained by starting with the <a href="https://www.khanacademy.org/math/ap-calculus-bc/bc-series-new/bc-10-2/a/proof-of-infinite-geometric-series-formula">formula for geometric series</a> $\sum\limits_{k=0}^\infty x^{k}=\frac{1}{1-x}$ and taking the derivative of both sides (if you remember calculus) or squaring both sides (if you're very good at algebra).
 
@@ -155,13 +155,18 @@ ${\rm Pr}(A|B)=\frac{{\rm Pr}(A\text{ and }B)}{{\rm Pr}(B)}$
 Let's start with the numerator. If it takes us exactly $k$ rolls to see our first $6$ _and_ all rolls in the process were even, than the first $k-1$ rolls were all $2$ or $4$ and the $k\text{th}$ roll was a $6$. The probability of this occuring is $\left(\frac{2}{6}\right)^{k-1}\left(\frac{1}{6}\right)$
 
 The denominator is the total probability that we roll a $6$ before the first odd. One way we could determine this is by evaluating 
-$\sum\limits_{i=0}^\infty \left(\frac{2}{6}\right)^{i-1}\left(\frac{1}{6}\right)$ (that is, summing the probability it takes exactly $i$ rolls to get a $6$ and all rolls were even, over all possible values of $i$). We saw how to some those kinds of series in the last section.
+$\sum\limits_{i=1}^\infty \left(\frac{2}{6}\right)^{i-1}\left(\frac{1}{6}\right)$ (that is, summing the probability it takes exactly $i$ rolls to get a $6$ and all rolls were even, over all possible values of $i$). We saw how to some those kinds of series in the last section.
 
 But a more intuitive way is as follows - rephrase "Probability we roll a $6$ before the first odd$ as "Probability that between the sides {1,3,5,6}, 6 is the first to show up". From here, we can immediately see by symmetry that the probability is $\frac{1}{4}$. Indeed summing the above series gives the same answer.
 
 Altogether, we have:
 
 ${\rm Pr}(\text{First $6$ on roll $k$} | \text{all rolls even})=\frac{\left(\frac{2}{6}\right)^{k-1}\left(\frac{1}{6}\right)}{1/4}=\frac{3}{2}\left(\frac{1}{3}\right)^{k-1}$
+
+and so:
+
+$E[\text{rolls until first 6}| \text{ all rolls even}]=\sum\limits_{k=1}^\infty k \frac{3}{2}\left(\frac{1}{3}\right)^{k-1}=\frac{3}{2}\left(\frac{1}{(1-\frac{2}{3})^2}=\frac{3}{2}$
+
 
 ---
 # Rolls until second 6, given all even
