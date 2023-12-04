@@ -105,7 +105,7 @@ Spoiler: The answers are 6, 3, 1.5, and ~3
 
 The explicit formula for conditional expection is as follows:
 $$
-$E[{\text{ number of rolls until first $6$ given condition $T$}]=\frac{(\sum\limits_{k=0}^{\infty}  k*(\text{Probability of k rolls until first $6$ \textit{and} condition $T$ satisfied})}{\textit{Probability condition $T$ is satisfied}
+E[{\text{ number of rolls until first $6$ given condition $T$}]=\frac{(\sum\limits_{k=0}^{\infty}  k*(\text{Probability of k rolls until first $6$ \textit{and} condition $T$ satisfied})}{\textit{Probability condition $T$ is satisfied}
 $$
 
 A detailed answer for (1) can be found <a href="https://gilkalai.wordpress.com/2017/09/07/tyi-30-expected-number-of-dice-throws/">here</a>
