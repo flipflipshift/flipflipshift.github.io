@@ -121,5 +121,18 @@ $\sum\limits_{k=0}^\infty k x^{k-1}=\frac{1}{(1-x)^2}$
 
 This can be obtained by starting with the <a href="https://www.khanacademy.org/math/ap-calculus-bc/bc-series-new/bc-10-2/a/proof-of-infinite-geometric-series-formula">formula for geometric series</a> $\sum\limits_{k=0}^\infty x^{k}=\frac{1}{1-x}$ and taking the derivative of both sides (if you remember calculus) or squaring both sides (if you're very good at algebra).
 
+Plugging in, we have $E[\text{# rolls until 6}]=\frac{1}{6}\frac{1}{(1-\frac{5}{6})^2}=6. 
+
+And we are done with (1). Sort of. Let's try that again, this time using an intuitive trick from Markov chains. We'll use "average" and "expected" interchangably as the former is more colloquial and we are going to be a bit informal here.
+
+Let $x$ be the average number of rolls until we see the first $6$. Let's roll the die once. With probability $\frac{1}{6}$, we rolled a $6$ and can stop. With probability 
+$\frac{5}{6}$, we didn't roll a $6$ and are then \textit{still} an average of $x$ steps away from a $6$. 
+
+So with probability $1/6$, we are in a scenario where we take $1$ roll to see a $6$ and in the remaining probability $5/6$, it will take an average of $x+1$ steps to see a $6$. So the average number of rolls until we see the first $6$ is $\frac{1}{6}*1+\frac{5}{6}(x+1)$. But the average is also $x$! This gives us the algebra equation:
+
+$x=\frac{1}{6}+\frac{5}{6}(x+1)$
+
+that gives $x=6$ when solving for $x$.
+
 
 
