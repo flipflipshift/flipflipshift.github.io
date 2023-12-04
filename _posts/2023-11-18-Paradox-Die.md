@@ -139,12 +139,31 @@ In this case, the experiment was rolling a die and success was defined by seeing
 ---
 # Rolls until first 6, given all even
 
-In this section, we will use $D6$ to refer to a fair $6$-sided die with sides labeled $1-6$ and $D3$ to refer to a fair $3$-sided die with sides labeled $2,4,6$. We will aim to answer the following three questions:
+In this section, we will use $D6$ to refer to a fair $6$-sided die with sides labeled $1-6$ and $D3$ to refer to a fair $3$-sided die with sides labeled $2,4,6$. Consider the following two questions:
 
 1. What is the expected number of rolls of a $D3$ until we see the first $6$?
 2. What is the expected number of rolls of a $D6$ until we see the first $6$, given that all rolls are even?
-3. What is the expected number of rolls of a $D6$ until we see the first $6$, given that all rolls until the first 6 were even and when we continued to roll the die until the one billionth roll, we still saw all evens?
 
 For the first question, we have a geometric distribution of success rate $\frac{1}{3}$, so the expected number of trials until success is $\frac{1}{\frac{1}{3}}=3$.
+
+The second question was posed by Gil Kalai in a 2017 <a href="https://gilkalai.wordpress.com/2017/09/07/tyi-30-expected-number-of-dice-throws/">blog post</a>. Most people incorrectly answered 3 (and keep in mind the audience for this blog is fairly math literate). The rationale was that the second question seems equivalent to the first. But let's calculate it explicitly.
+
+Analogously to last section, we begin by calculating the probability that it takes exactly $k$ rolls to see the first $6$, given that all rolls were even. Following standard conventions, we'll write ${\rm Pr}(A|B)$ as shorthand for "Probability that $A$ occurs, given that $B$ occurs$. From the <a href="https://en.wikipedia.org/wiki/Conditional_probability">formula for conditional probability</a>, we have:
+
+${\rm Pr}(A|B)=\frac{{\rm Pr}(A\text{ and }B)}{{\rm Pr}(B)}$
+
+Let's start with the numerator. If it takes us exactly $k$ rolls to see our first $6$ _and_ all rolls in the process were even, than the first $k-1$ rolls were all $2$ or $4$ and the $k\text{th}$ roll was a $6$. The probability of this occuring is $\left(\frac{2}{6}\right)^{k-1}\left(\frac{1}{6}\right)$
+
+The denominator is the total probability that we roll a $6$ before the first odd. One way we could determine this is by evaluating 
+$\sum\limits_{i=0}^\infty \left(\frac{2}{6}\right)^{i-1}\left(\frac{1}{6}\right)$ (that is, summing the probability it takes exactly $i$ rolls to get a $6$ and all rolls were even, over all possible values of $i$). We saw how to some those kinds of series in the last section.
+
+But a more intuitive way is as follows - rephrase "Probability we roll a $6$ before the first odd$ as "Probability that between the sides {1,3,5,6}, 6 is the first to show up". From here, we can immediately see by symmetry that the probability is $\frac{1}{4}$. Indeed summing the above series gives the same answer.
+
+Altogether, we have:
+
+${\rm Pr}(\text{First $6$ on roll $k$} | \text{all rolls even})=\frac{\left(\frac{2}{6}\right)^{k-1}\left(\frac{1}{6}\right)}{1/4}=\frac{3}{2}\left(\frac{1}{3}\right)^{k-1}$
+
+---
+# Rolls until second 6, given all even
 
 
