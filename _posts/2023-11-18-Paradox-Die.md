@@ -103,6 +103,11 @@ In this subsection, we'll answer the followng questions:
 
 Spoiler: The answers are 6, 3, 1.5, and ~3
 
+For (1), let's first find the probability that it takes exactly $k$ rolls to see the first $6$. This means the first $k-1$ rolls were not $6$ and roll $k$ was $6$. The probability that a $D6$ rolls a $6$ is $\frac{1}{6}$ and the probability it does not is $\frac{5}{6}$. Following the <a href="https://brilliant.org/wiki/probability-rule-of-product/"rule of product</a> for 
+independent probabilities, we get:
+
+$\text{Pr($k$ rolls until first $6$)}=(\frac{5}{6})^{k-1}\frac{1}{6}$
+
 The explicit formula for conditional expection is as follows:
 
 $E[{\text{ number of rolls until first $6$ given condition $T$}]=\frac{(\sum\limits_{k=0}^{\infty}  k*(\text{Probability of k rolls until first $6$ \textit{and} condition $T$ satisfied})}{\textit{Probability condition $T$ is satisfied}}$
