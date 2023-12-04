@@ -2,7 +2,7 @@
 
 Which of the following do you think is bigger?
 
-$A$: The expected number of rolls of a fair die until you roll two $6$s in a row, given that all rolls were even.
+$A$: The expected number of rolls of a fair die until you roll two $6\text{s}$ in a row, given that all rolls were even.
 
 $B$: The expected number of rolls of a fair die until you roll the second $6$ (not necessarily in a row), given that all rolls were even.
 
@@ -101,7 +101,7 @@ In this subsection, we'll answer the followng questions:
 3. What is the expected number of rolls of a $D6$ until we see the first $6$, given that all rolls are even?
 4. What is the expected number of rolls of a $D6$ until we see the first $6$, given that all rolls until the first 6 were even and when we continued to roll the die until the one billionth roll, we still saw all evens?
 
-Spoiler: The answers are 6, 3, 1.5, and ~3
+Spoiler: The answers are 6, 3, 1.5, and approximately 3.
 
 For (1), let's first find the probability that it takes exactly $k$ rolls to see the first $6$. This means the first $k-1$ rolls were not $6$ and roll $k$ was $6$. The probability that a $D6$ rolls a $6$ is $\frac{1}{6}$ and the probability it does not is $\frac{5}{6}$. 
 
