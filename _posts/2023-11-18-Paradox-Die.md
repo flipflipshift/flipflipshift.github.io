@@ -92,32 +92,22 @@ The estimate for $A$ should be close to $2.727$ and the estimate for B should be
 ---
 # The case of one 6
 
-For convenience, we'll use $D6$ to refer to a fair $6$-sided die with sides labeled $1-6$ and $D3$ to refer to a fair $3$-sided die with sides labeled $2,4,6$.
+For convenience, we'll use $D6$ to refer to a fair $6$-sided die with sides labeled 1-6$ and $D3$ to refer to a fair $3$-sided die with sides labeled $2,4,6$.
 
 In this subsection, we'll answer the followng questions:
 
-1. What is the expected number of rolls of a $D6$ until we see the first $6$?
+1. What is the expected number of rolls of a $D6$ until we see the first 6?
 2. What is the expected number of rolls of a $D3$ until we see the first $6$?
 3. What is the expected number of rolls of a $D6$ until we see the first $6$, given that all rolls are even?
 4. What is the expected number of rolls of a $D6$ until we see the first $6$, given that all rolls until the first 6 were even and when we continued to roll the die until the one billionth roll, we still saw all evens?
 
 Spoiler: The answers are 6, 3, 1.5, and ~3
 
-For (1), let's first find the probability that it takes exactly $k$ rolls to see the first $6$. This means the first $k-1$ rolls were not $6$ and roll $k$ was $6$. The probability that a $D6$ rolls a $6$ is $\frac{1}{6}$ and the probability it does not is $\frac{5}{6}$. Following the <a href="https://brilliant.org/wiki/probability-rule-of-product/"rule of product</a> for 
-independent probabilities, we get:
+For (1), let's first find the probability that it takes exactly $k$ rolls to see the first $6$. This means the first $k-1$ rolls were not $6$ and roll $k$ was $6$. The probability that a $D6$ rolls a $6$ is $\frac{1}{6}$ and the probability it does not is $\frac{5}{6}$. 
 
-$\text{Pr($k$ rolls until first $6$)}=(\frac{5}{6})^{k-1}\frac{1}{6}$
+Following the <a href="https://brilliant.org/wiki/probability-rule-of-product/">rule of product</a> for independent probabilities, we get:
 
-The explicit formula for conditional expection is as follows:
+$\text{Pr($k$ rolls until first $6$)}=\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
 
-$E[{\text{ number of rolls until first $6$ given condition $T$}]=\frac{(\sum\limits_{k=0}^{\infty}  k*(\text{Probability of k rolls until first $6$ \textit{and} condition $T$ satisfied})}{\textit{Probability condition $T$ is satisfied}}$
-
-A detailed answer for (1) can be found <a href="https://gilkalai.wordpress.com/2017/09/07/tyi-30-expected-number-of-dice-throws/">here</a>
-
-
-
-In 2017, Gil Kalai <a href="https://gilkalai.wordpress.com/2017/09/07/tyi-30-expected-number-of-dice-throws/">posed</a> the following problem on his blog (which inspired this paradox):
-
-What is the expected number of rolls until you roll the first $6$, given the?
 
 
