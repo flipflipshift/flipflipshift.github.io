@@ -109,11 +109,17 @@ For (1), let's first find the probability that it takes exactly $k$ rolls to see
 
 The probability that a $D6$ rolls a $6$ is $\frac{1}{6}$ and the probability it does not is $\frac{5}{6}$. Following the <a href="https://brilliant.org/wiki/probability-rule-of-product/">rule of product</a> for independent probabilities, we get:
 
-$\text{Pr(exactly $k$ rolls until first $6$)}=\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
+$\text{Pr(First $6$ on roll $k$)}=\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
 
 We can now get a formula for the expected number of rolls of a $D6$ until we see the first $6$. The <a href="https://online.stat.psu.edu/stat500/lesson/3/3.2/3.2.1">formula for expectation</a> gives:
 
-$E[\text{# rolls until the first 6}]=\sum\limits_{k=0}^\infty k*\text{Pr(exactly $k$ rolls until first $6$)}=\sum\limits_{k=0}^\infty k\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
+$E[\text{# rolls until 6}]=\sum\limits_{k=0}^\infty k*\text{Pr(First $6$ on roll $k$)}=\sum\limits_{k=0}^\infty k\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
+
+Now we'll use the following fact: for $-1<x<1$:
+
+$\sum\limits_{k=0}^\infty k x^{k-1}=\frac{1}{(1-x)^2}$
+
+This can be obtained by starting with the <a href="https://www.khanacademy.org/math/ap-calculus-bc/bc-series-new/bc-10-2/a/proof-of-infinite-geometric-series-formula">formula for geometric series</a> $\sum\limits_{k=0}^\infty x^{k}=\frac{1}{1-x}$ and taking the derivative of both sides (if you remember calculus) or squaring both sides (if you're very good at algebra).
 
 
 
