@@ -111,7 +111,7 @@ The probability that a $D6$ rolls a $6$ is $\frac{1}{6}$ and the probability it 
 
 $\text{Pr(exactly $k$ rolls until first $6$)}=\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
 
-So the <a href="https://online.stat.psu.edu/stat500/lesson/3/3.2/3.2.1">formula for expectation</a> gives:
+We can now get a formula for the expected number of rolls of a $D6$ until we see the first $6$. The <a href="https://online.stat.psu.edu/stat500/lesson/3/3.2/3.2.1">formula for expectation</a> gives:
 
 $E[\text{# rolls until the first 6}]=\sum\limits_{k=0}^\infty k*\text{Pr(exactly $k$ rolls until first $6$)}=\sum\limits_{k=0}^\infty k\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
 
