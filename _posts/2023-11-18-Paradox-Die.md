@@ -82,8 +82,12 @@ def estimate_B(n):
   B_estimate=(sum_rolls_without_odds)/(num_sequences_without_odds)
   return B_estimate
 
-print("Estimate for A: " + str(estimate_A(1000000)))
-print("Estimate for B: " + str(estimate_B(1000000)))
+print("Estimate for A: " + "{0:0.3f}".format(estimate_A(100000),2))
+print("Estimate for B: " + "{0:0.3f}".format(estimate_B(100000),2))
 
 ```
+The 100,000s in the last two lines represent the number of sequences being rolled for the estimate; you can add zeros for accuracy or subtract zeros for faster run-time.
+
+The estimate for $A$ should be close to $2.727$ and the estimate for B should be close to $3.000$. We will later see that the exact value for $A$ is $30/11$ and the exact value for $B$ is $3$, but it is helpful to first unambiguously verify that $B$ is greater than $A$ (and ensure that we are on the same page of what $A$ and $B$ mean) before diving into the possibly unintuitive math.
+
 
