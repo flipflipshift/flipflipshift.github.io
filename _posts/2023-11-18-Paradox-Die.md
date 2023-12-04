@@ -21,11 +21,12 @@ Before we proceed, let's write some code to estimate $A$ and $B$. The only goal 
 ```Python
 import random
 def estimate_A(n):
+  #Rolls 'n' sequences of die rolls, stopping each when two 6s in a row.
+  #Tracks number of sequences with no odds
+  #Tracks sum of number of rolls in all sequences with no odds
+  #Computes average by dividing the two.
   num_sequences_without_odds=0
   sum_rolls_without_odds=0
-  #Roll 'n' sequences of die rolls, stopping each when getting two 6s in a row. 
-  #For each sequence, if no odd showed up, add number of rolls to sum_rolls_without_odds and increment num_sequences_without_odds
-  #Average number of rolls in such sequences is then (sum_rolls_without_odds)/(num_sequences_without_odds)
   for i in range(n):
     counter=0
     last_roll_six=False
@@ -53,11 +54,12 @@ def estimate_A(n):
   return A_estimate
 
 def estimate_B(n):
+  #Rolls 'n' sequences of die rolls, stopping each at second 6.
+  #Tracks number of sequences with no odds
+  #Tracks sum of number of rolls in all sequences with no odds
+  #Computes average by dividing the two.
   num_sequences_without_odds=0
   sum_rolls_without_odds=0
-  #Roll 'n' sequences of die rolls, stopping each when getting second 6. 
-  #For each sequence, if no odd showed up, add number of rolls to sum_rolls_without_odds and increment num_sequences_without_odds
-  #Average number of rolls in such sequences is then (sum_rolls_without_odds)/(num_sequences_without_odds)
   for i in range(n):
     counter=0
     six_count=0
@@ -92,7 +94,7 @@ The estimate for $A$ should be close to $2.727$ and the estimate for B should be
 ---
 # The case of one 6
 
-For convenience, we'll use $D6$ to refer to a fair $6$-sided die with sides labeled 1-6$ and $D3$ to refer to a fair $3$-sided die with sides labeled $2,4,6$.
+For convenience, we'll use $D6$ to refer to a fair $6$-sided die with sides labeled $1-6$ and $D3$ to refer to a fair $3$-sided die with sides labeled $2,4,6$.
 
 In this subsection, we'll answer the followng questions:
 
@@ -108,6 +110,10 @@ For (1), let's first find the probability that it takes exactly $k$ rolls to see
 Following the <a href="https://brilliant.org/wiki/probability-rule-of-product/">rule of product</a> for independent probabilities, we get:
 
 $\text{Pr($k$ rolls until first $6$)}=\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
+
+So the <a href="https://online.stat.psu.edu/stat500/lesson/3/3.2/3.2.1">formula for expectation</a> gives:
+
+$E[\text{number of rolls until the first 6}]=\sum\limits_{k=0}^\infty k*\text{Pr($k$ rolls until first $6$)}=\sum\limits_{k=0}^\infty k\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
 
 
 
