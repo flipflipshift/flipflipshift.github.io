@@ -148,13 +148,11 @@ For the first question, we have a geometric distribution of success rate $\frac{
 
 The second question was posed by Gil Kalai in a 2017 <a href="https://gilkalai.wordpress.com/2017/09/07/tyi-30-expected-number-of-dice-throws/">blog post</a>. Most people incorrectly answered 3 (and keep in mind the audience for this blog is fairly math literate). The rationale was that the second question seems equivalent to the first. But let's calculate it explicitly.
 
-Analogously to last section, we begin by calculating the probability that it takes exactly $k$ rolls to see the first $6$, given that all rolls were even. Following standard conventions, we'll write ${\rm Pr}(X|Y)$ as shorthand for "Probability that $X$ occurs, given that $Y$ occurs. From the <a href="https://en.wikipedia.org/wiki/Conditional_probability">formula for conditional probability</a>, we have:
+Analogously to last section, we begin by calculating the probability that it takes exactly $k$ rolls to see the first $6$, given that all rolls were even. Following standard conventions, we'll write ${\rm Pr}(X|Y)$ as shorthand for "Probability that $X$ occurs, given that $Y$ occurs". From the <a href="https://en.wikipedia.org/wiki/Conditional_probability">formula for conditional probability</a>, we have:
 
 ${\rm Pr}(X|Y)=\frac{{\rm Pr}(X\text{ and }Y)}{{\rm Pr}(Y)}$
 
-Let's start with the numerator. If it takes us exactly $k$ rolls to see our first $6$ _and_ all rolls in the process were even, than the first $k-1$ rolls were all $2$ or $4$ and the $k\text{th}$ roll was a $6$. The probability of this occuring is $\left(\frac{2}{6}\right)^{k-1}\left(\frac{1}{6}\right)$
-
-
+Let's start with the numerator. If it takes us exactly $k$ rolls to see our first $6$ _and_ all rolls in the process were even, than the first $k-1$ rolls were all $2$ or $4$ and the $k\text{th}$ roll was a $6$. The probability of this occuring is $\left(\frac{2}{6}\right)^{k-1}\left(\frac{1}{6}\right)$.
 
 
 
