@@ -186,13 +186,13 @@ In other words, we are still looking at the number of rolls until the first 6, a
 $E[\text{number of rolls}\mid \text{evens up to 6 and billionth roll}]=\sum\limits_{k=1}^\infty k\frac{\text{Pr(first $6$ on roll $k$ and even up to $6$ and billionth roll}}{\text{Pr(even up to 
 $6$ and billionth roll}}
 
-Now note that even under the assumption of having all evens show up in the first billion rolls, having no $6$ show up in the first billion rolls is \textit{tiny}- $(\frac{2}{3})^{1000000000}$. So with extreme accuracy, we can approximate the denominator as just the probability that the first billion rolls are all even - $\left( \frac{1}{2}\right)$
+Now note that even under the assumption of having all evens show up in the first billion rolls, having no $6$ show up in the first billion rolls is _tiny_- $(\frac{2}{3})^{1000000000}$. So with extreme accuracy, we can approximate the denominator as just the probability that the first billion rolls are all even - $\left( \frac{1}{2}\right)$
 
 Now for $k$ less than one billion, the probability that the first $6$ is on roll $k$ and there are only evens up to the billionth roll is:
 
 $\left(\frac{2}{6}\right)^{k-1}\left(\frac{1}{6}\right)\left(\frac{1}{2}\right)^{1000000000-k}=\left(\frac{1}{3}\right)\left(\frac{2}{3}\right)^{k-1}\left(\frac{1}{2}\right)^{1000000000}$
 
-For $k$ greater than one billion, the expressions slightly different, but the contributions are so tiny at this point that we can pretend they are the same with basically no percent change in our answer. So we have
+For $k$ greater than one billion, the expressions slightly different, but the contributions are so astronomically small at this point that we can pretend they are the same with basically no percent change in our answer. So we have
 
 $E[\text{number of rolls}\mid \textit{even up to 6 and billionth roll}]~\sum\limits_{k=0}^\infty k\left(\frac{1}{3}\right)\left(\frac{2}{3}\right)^{k-1}=\frac{1/3}{(1-2/3)^2}=3$.
 
