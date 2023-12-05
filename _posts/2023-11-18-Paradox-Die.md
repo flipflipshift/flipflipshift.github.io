@@ -251,5 +251,14 @@ For $k<2$, this probability is $0$ and for $k=2$, the probability is $\frac{1}{6
 
 So:
 
-$A<22(2\left(\frac{1}{36}\right)+\sum\limits_{k=3}^\infty k\left(\frac{1}{108}\right)\left(\frac{1}{2}\right)^{k-3})=77/27~2.85$ after some basic sum manipulations.
+$A<22(2\left(\frac{1}{36}\right)+\sum\limits_{k=3}^\infty k\left(\frac{1}{108}\right)\left(\frac{1}{2}\right)^{k-3})=77/27<2.852$ (skipping some algebra to manipulate the sum). The exact answer for $A$ is actually $30/11$, which is about $2.72$.
+
+---
+# The general case
+
+Following the above argument, you can show that the expected number of rolls until the $n\text{th}$ $6$, given that all rolls are odd, is $\frac{3n}{2}$. The expected number of rolls until the first instance of $n$ $6\text{s}$ in a row, given that all rolls are odd is a little less than $n+\frac{4}{5}$. So, for instance, the expected number of rolls until the $70\text{th}$ $6$ is more than the expected number of rolls until the first instance of $100$ $6\text{s}$ in a row when both require no odds to show up before the stopping condition.
+
+And now you understand why.
+
+
 
