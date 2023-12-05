@@ -136,7 +136,15 @@ Probability distributions of this form are called _geometric distributions_.
 
 In this case, the experiment was rolling a die and success was defined by seeing a $6$, so it is a _geometric distribution with success rate_ $\frac{1}{6}$. And so the expected number of trials until sucess is $\frac{1}{1/6}=6$.
 
+---
+# Rolls until first 6, given all even
 
+In this section, we will use $D6$ to refer to a fair $6$-sided die with sides labeled $1-6$ and $D3$ to refer to a fair $3$-sided die with sides labeled $2,4,6$. Consider the following two questions:
+
+1. What is the expected number of rolls of a $D3$ until we see the first $6$?
+2. What is the expected number of rolls of a $D6$ until we see the first $6$, given that all rolls are even?
+
+For the first question, we have a geometric distribution of success rate $\frac{1}{3}$, so the expected number of trials until success is $\frac{1}{1/3}=3$.
 
 
 
