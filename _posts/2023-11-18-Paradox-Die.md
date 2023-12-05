@@ -255,7 +255,7 @@ For $k<2$, this probability is $0$ and for $k=2$, the probability is $\frac{1}{6
 
 So:
 
-$A<22(2\left(\frac{1}{36}\right)+\sum\limits_{k=3}^\infty k\left(\frac{1}{108}\right)\left(\frac{1}{2}\right)^{k-3}=77/27~2.85$ after some basic sum manipulations.
+$A<22(2\left(\frac{1}{36}\right)+\sum\limits_{k=3}^\infty k\left(\frac{1}{108}\right)\left(\frac{1}{2}\right)^{k-3})=77/27~2.85$ after some basic sum manipulations.
 
 
 
