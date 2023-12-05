@@ -151,8 +151,7 @@ The second question was posed by Gil Kalai in a 2017 <a href="https://gilkalai.w
 Analogously to last section, we begin by calculating the probability that it takes exactly $k$ rolls to see the first $6$, given that all rolls were even. Following standard conventions, we'll write $\text{Pr}(X\mid Y)$ as shorthand for "Probability that $X$ occurs, given that $Y$ occurs".
 Analogously to last section, we begin by calculating the probability that it takes exactly $k$ rolls to see the first $6$, given that all rolls were even. Following standard conventions, we'll write ${\rm Pr}(X\mid Y)$ as shorthand for "Probability that $X$ occurs, given that $Y$ occurs. From the <a href="https://en.wikipedia.org/wiki/Conditional_probability">formula for conditional probability</a>, we have:
 
-${\rm Pr}(X\mid Y)=\frac{{\rm Pr}(X\text{ and }Y)}{{\rm Pr}(Y)}$
+$\text{Pr}(X\mid Y)=\frac{\text{Pr}(X\text{ and }Y)}{\text{ Pr}(Y)}$
 
-Let's start with the numerator. If it takes us exactly $k$ rolls to see our first $6$ _and_ all rolls in the process were even, than the first $k-1$ rolls were all $2$ or $4$ and the $k\text{th}$ roll was a $6$. The probability of this occuring is $\left(\frac{2}{6}\right)^{k-1}\left(\frac{1}{6}\right)$.
-
+Let's start with the numerator. If it takes us exactly $k$ rolls to see our first $6$ _and_ all rolls in the process were even, than the first $k-1$ rolls were all $2$ or $4$ and the $k\text{th}$ roll was a $6$. The probability of this occuring is $\left(\frac{2}{6}\right)^{k-1}\left(\frac{1}{6}\right)$
 
