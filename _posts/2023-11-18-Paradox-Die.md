@@ -151,7 +151,27 @@ The second question was posed by Gil Kalai in a 2017 <a href="https://gilkalai.w
 Analogously to last section, we begin by calculating the probability that it takes exactly $k$ rolls to see the first $6$, given that all rolls were even. Following standard conventions, we'll write $\text{Pr}(X\mid Y)$ as shorthand for "Probability that $X$ occurs, given that $Y$ occurs".
 Analogously to last section, we begin by calculating the probability that it takes exactly $k$ rolls to see the first $6$, given that all rolls were even. Following standard conventions, we'll write ${\rm Pr}(X\mid Y)$ as shorthand for "Probability that $X$ occurs, given that $Y$ occurs. From the <a href="https://en.wikipedia.org/wiki/Conditional_probability">formula for conditional probability</a>, we have:
 
-$\text{Pr}(X\mid Y)=\frac{\text{Pr}(X\text{ and }Y)}{\text{ Pr}(Y)}$
+$\text{Pr}(X\mid Y)=\frac{\text{Pr}(X\text{and }Y)}{\text{Pr}(Y)}$
 
 Let's start with the numerator. If it takes us exactly $k$ rolls to see our first $6$ _and_ all rolls in the process were even, than the first $k-1$ rolls were all $2$ or $4$ and the $k\text{th}$ roll was a $6$. The probability of this occuring is $\left(\frac{2}{6}\right)^{k-1}\left(\frac{1}{6}\right)$
+
+The denominator is the total probability that we roll a $6$ before the first odd. One way we could determine this is by evaluating 
+$\sum\limits_{i=1}^\infty \left(\frac{2}{6}\right)^{i-1}\left(\frac{1}{6}\right)$ (that is, summing the probability it takes exactly $i$ rolls to get a $6$ and all rolls were even, over all possible values of $i$). We saw how to some those kinds of series in the last section.
+
+But a more intuitive way is as follows - rephrase "Probability we roll a $6$ before the first odd$ as "Probability that between the sides $\{1,3,5,6\}$, 6 is the first to show up". From here, we can immediately see by symmetry that the probability is $\frac{1}{4}$. Indeed summing the above series gives the same answer.
+
+Altogether, we have:
+
+$\text{Pr}(\text{First $6$ on roll $k$} \mid  \text{all rolls even})=\frac{\left(\frac{2}{6}\right)^{k-1}\left(\frac{1}{6}\right)}{1/4}=\frac{3}{2}\left(\frac{1}{3}\right)^{k-1}$
+
+and so:
+
+$E[\text{rolls until first 6}\mid  \text{all rolls even}]=\sum\limits_{k=1}^\infty k \frac{3}{2}\left(\frac{1}{3}\right)^{k-1}=\frac{3}{2}\left(\frac{1}{(1-\frac{2}{3})^2}\right)=\frac{3}{2}$
+
+There is another, cuter, way to answer the second problem that will be important for our evaluation of $B$. We will first rephrase the question as "What is 
+the expected number of rolls of a $D6$ until the first $6$, given that $6$ is the first to occur out of ${1,3,5,6}$?". We can rephrase this again as "What is the expected number of rolls of a $D6$ until the first side in ${1,3,5,6}$ shows up, given that $6$ is the first to occur out of ${1,3,5,6}$?".
+
+Now we have some neat symmetry - the expected number of rolls of a $D6$ until a the first side in ${1,3,5,6}$ shows up shouldn't depend on which of those four sides happened to be first. So the following will have the same answer as the second question: "What is the expected number of rolls of a die until the first side in ${1,3,5,6}$ shows up?"
+
+That's a geometric distribution with success rate $\frac{4}{6}$! And so its expectation is $\frac{1}{4/6}=\frac{3}{2}$.
 
