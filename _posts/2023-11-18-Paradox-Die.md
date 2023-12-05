@@ -146,5 +146,6 @@ In this section, we will use $D6$ to refer to a fair $6$-sided die with sides la
 
 For the first question, we have a geometric distribution of success rate $\frac{1}{3}$, so the expected number of trials until success is $\frac{1}{1/3}=3$.
 
+The second question was posed by Gil Kalai in a 2017 <a href="https://gilkalai.wordpress.com/2017/09/07/tyi-30-expected-number-of-dice-throws/">blog post</a>. Most people incorrectly answered 3 (and keep in mind the audience for this blog is fairly math literate). The rationale was that the second question seems equivalent to the first. But let's calculate it explicitly.
 
 
