@@ -197,3 +197,20 @@ For $k$ greater than one billion, the expressions slightly different, but the co
 $E[\text{number of rolls}\mid \text{evens up to 6 and billionth roll}]=\sum\limits_{k=0}^\infty k\left(\frac{1}{3}\right)\left(\frac{2}{3}\right)^{k-1}=\frac{1/3}{(1-2/3)^2}=3$.
 
 which is roughly the expected number of rolls until $6$ on a $D3$ with sides labeled ${2,4,6}$. The conclusion is that adding conditions _after_ the first $6$ can indeed impact the expected number of rolls to the first $6$.
+
+---
+# Reviewing the paradox
+
+Recall our definitions:
+
+$A$: The expected number of rolls of a fair die until you roll two $6\text{s}$ in a row, given that all rolls were even.
+
+$B$: The expected number of rolls of a fair die until you roll the second $6$ (not necessarily in a row), given that all rolls were even.
+
+we will now consider a third:
+
+$C$: The expected number of rolls of a fair die until you roll the second $6$, given that all rolls until the first instance of two $6\text{s}$ in a row are even.
+
+$C$ and $A$ are directly comparable since they have the exact same condition - all rolls before the first instance of two $6\text{s}$ in a row are even and no conditions are given on any rolls that occur after. Since, amongst these rolls, the second $6$ will always occur at or before the first instance of two $6\text{s}$ in a row, we can safely conclude $A>C$
+
+However, we've seen in the last section that $C$ is not necessarily the same as $B$, _even though we've only added conditions that apply at or after the second $6$_. So we cannot immediately conclude $A>B$. The two need to be calculated independently and directly compared.
