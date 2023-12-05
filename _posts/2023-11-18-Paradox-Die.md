@@ -180,7 +180,7 @@ That's a geometric distribution with success rate $\frac{4}{6}$! And so its expe
 
 We'll now make a modification that might seem harmless. We will roll a $D6$ one billion times (and keep going until we get a $6$ if we somehow didn't get it in the first 1 billion rolls). What is the expected number of rolls until the first 6 given that _every roll that ever showed up in this process_ is even.
 
-In other words, we are still looking at the number of rolls until the first 6, and we are still requiring that all rolls before the first 6 are even. But now we are also requiring that rolls _after_ the first 6 are even. Does this impact the expectation?
+In other words, we are still looking at the number of rolls until the first 6, and we are still requiring that all rolls before the first 6 are even. But now we are also requiring that rolls _after_ the first 6 are even. Does this impact the expectation? Intuitively one might think "no", but we'll see that the expectation nearly doubles.
 
 $E[\text{number of rolls}|\textit{even up to 6 and billionth roll}]=\sum\limits_{k=1}^\infty k\frac{\text{Pr(first $6$ on roll $k$ and even up to $6$ and billionth roll}}{\text{Pr(even up to 
 $6$ and billionth roll}}
@@ -196,6 +196,69 @@ For $k$ greater than one billion, the expressions slightly different, but the co
 $E[\text{number of rolls}|\textit{even up to 6 and billionth roll}]~\sum\limits_{k=0}^\infty k\left(\frac{1}{3}\right)\left(\frac{2}{3}\right)^{k-1}=\frac{1/3}{(1-2/3)^2}=3$.
 
 which is roughly the expected number of rolls until $6$ on a $D3$ with sides labeled ${2,4,6}$.
+
+The conclusion is that adding conditions \textit{after} the first $6$ can indeed impact the expected number of rolls to the first $6$.
+
+
+---
+# Reviewing the paradox
+
+Recall our definitions:
+
+$A$: The expected number of rolls of a fair die until you roll two $6\text{s}$ in a row, given that all rolls were even.
+
+$B$: The expected number of rolls of a fair die until you roll the second $6$ (not necessarily in a row), given that all rolls were even.
+
+we will now consider a third:
+
+$C$: The expected number of rolls of a fair die until you roll the second $6$, given that all rolls until the first instance of two $6\text{s}$ in a row are even.
+
+$C$ and $A$ are directly comparable since they have the exact same condition - all rolls before the first instance of two $6\text{s}$ in a row are even and no conditions are given on any rolls that occur after. Since, amongst these rolls, the second $6$ will always occur at or before the first instance of two $6\text{s}$ in a row, we can safely conclude:
+
+$A>C$
+
+Now we've seen in the last section that $C$ is not necessarily the same as $B$, _even though we've only added conditions that apply at or after the second $6$_. So we cannot immediately conclude $A>B$. The two need to be calculated independently and directly compared.
+
+---
+# Proving $B>A$
+
+$B$ ends up being a lot easier to calculate than $A$, so our strategy will be to prove that $B=3$, then use some nicer upper bounds to show that $A$ is less than $3$. The strategy to compute $B$ comes from a cute argument by reddit user u/bobjane in the aforementioned thread:
+
+The average number of rolls until the first instance of ${1,3,5,6}$ is $3/2$, as it is a geometric distribution. Then after rolling the first, the average until the next instance of ${1,3,5,6}$ is again $3/2$, no matter how long it took to get the first instance. 
+
+By linearity of expectation, we then have that the expected number of rolls of a die until the second instance of a side in ${1,3,5,6}$ is $\frac{3}{2}+\frac{3}{2}=3$. Conditioning on the specific combination we see being $6$ and $6$ does not impact the expectation, hence we have $B=3$.
+
+The same user actually <a href="https://www.reddit.com/r/mathriddles/comments/17kuong/comment/k7fg2kk/?utm_source=share&utm_medium=web2x&context=3">gave an explicit formula</a> for $A$ in the general setting of rolling until $n$ $6\text{s}$ in a row, but there are a lot of steps and we won't need the exact answer anyway. Instead, we will content ourselves with an upper bound for $A$ that is lower than $3$.
+
+We first compute the probability that two $6\text{s}$ occur before the first odd via a Markov chain argument. A "success" occurs if we roll the two $6\text{s}$ before an odd and a "failure" occurs if we roll the odd first.
+
+Let $p_0$ be the probability of success at the beginning. Any time our most recent roll was a $2$ or $4$ and we have neither rolled $2$ $6\text{s}$ in a row nor an odd, the probability of success is still $p_0$ - nothing has changed. We will refer to this state as $S_0$.
+
+But when we roll a $6$, the probability of getting two $6\text{s}$ before an odd is temporarily higher - call this $p_6$. We will call this state $S_6$. If the next roll is a $2$ or $4$, we are back to $S_0$ and the new probability becomes $p_0$ again.
+
+We will solve for $p_0$ and $p_6$ via a system of equations:
+
+$p_0=\frac{1}{6}p_1+\frac{2}{6}p_0$
+$p_1=\frac{1}{6}+\frac{2}{6}p_0$
+
+In other words, the probability of success from $S_0$ is equal to the probability of going from $S_0$ to $S_1$ (which occurs when you roll a $6$, so $\frac{1}{6}) times the probability of success from $S_1$, plus the probability you stay at $S_0$ (which occurs when rolling a $2$ or $4$) times the probability of success from $S_0$.
+
+On the other hand the probability of success from $S_1$ is $\frac{1}{6}$ (the probability of rolling another $6$ and being done), plus the probability you go back to $S_0$ times the probability of success from $S_0$.
+
+Solving this system gives $p_0=\frac{1}{22}$. So:
+
+$A=\sum\limits_{k=0}^\infty k \frac{\text{Pr(first instance of two $6$ in a row at roll $k$ and all evens until roll $k$}}{1/22}$
+
+That numerator is tricky to calculate. It is much easier to calculate the probability that _an_ instance of exactly two $6\text{s}$ in a row occurs at roll $k$ and all evens until row $k$; this will be higher but we just want an upper bound anyway!.
+
+For $k<2$, this probability is $0$ and for $k=2$, the probability is $\frac{1}{6^2}=\frac{1}{36}$. For $k>2$, this is the probability that the first $k-3$ rolls are even, roll $k-2$ is a $2$ or $4$ and rolls $k-1,k$ are $6$. In other words, $\left(\frac{1}{2}\right)^{k-1}\left(\frac{1}{3}\right)\left(\frac{1}{6}\right)^2=\left(\frac{1}{108}\right)\left(\frac{1}{2^{k-3}\right)$.
+
+So:
+
+$A<22(2\left(\frac{1}{36}\right)+\sum\limits_{k=3}^\infty k\left(\frac{1}{108}\right)\left(\frac{1}{2}\right)^{k-3}=77/27~2.85$ after some basic sum manipulations.
+
+
+
 
 
 
