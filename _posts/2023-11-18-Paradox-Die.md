@@ -94,6 +94,48 @@ The estimate for $A$ should be close to $2.727$ and the estimate for B should be
 ---
 # Primer on geometric distributions
 
+We'll begin by calculating the expected number of rolls of a die to see the first $6$. If you know how to quickly solve this problem, you can skip this subsection.
+
+To do so, we first find the probability that it takes exactly $k$ rolls to see the first $6$. This means the first $k-1$ rolls were not $6$ and roll $k$ was $6$. 
+
+The probability that a die rolls a $6$ is $\frac{1}{6}$ and the probability it does not is $\frac{5}{6}$. Following the <a href="https://brilliant.org/wiki/probability-rule-of-product/">rule of product</a> for independent probabilities, we get:
+
+$\text{Pr(First $6$ on roll $k$)}=\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
+
+We can now get a formula for the expected number of rolls of a die until we see the first $6$. The <a href="https://online.stat.psu.edu/stat500/lesson/3/3.2/3.2.1">formula for expectation</a> gives:
+
+$E[\text{num rolls until 6}]=\sum\limits_{k=1}^\infty k*\text{Pr(First $6$ on roll $k$)}=\sum\limits_{k=1}^\infty k\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
+
+Now we'll use the following fact: for $-1<x<1$:
+
+$\sum\limits_{k=1}^\infty k x^{k-1}=\frac{1}{(1-x)^2}$
+
+This can be obtained by starting with the <a href="https://www.khanacademy.org/math/ap-calculus-bc/bc-series-new/bc-10-2/a/proof-of-infinite-geometric-series-formula">formula for geometric series</a> $\sum\limits_{k=0}^\infty x^{k}=\frac{1}{1-x}$ and taking the derivative of both sides (if you remember calculus) or squaring both sides (if you're very good at algebra).
+
+Plugging in, we have 
+$E[\text{num rolls until 6}]=\frac{1}{6}\frac{1}{(1-\frac{5}{6})^2}=6$. 
+And we are done. Sort of.
+
+Let's try that again, this time using an intuitive trick from Markov chains. We'll use "average" and "expected" interchangably as the former is more colloquial and we are going to be a bit informal here.
+
+Let $x$ be the average number of rolls until we see the first $6$. Let's roll the die once. With probability $\frac{1}{6}$, we rolled a $6$ and can stop. With probability 
+$\frac{5}{6}$, we didn't roll a $6$ and are then _still_ an average of $x$ steps away from a $6$. 
+
+So with probability $1/6$, we are in a scenario where we take $1$ roll to see a $6$ and in the remaining probability $5/6$, it will take an average of $x+1$ steps to see a $6$. So the average number of rolls until we see the first $6$ is $\frac{1}{6}(1)+\frac{5}{6}(x+1)$. But the average is also $x$! This gives us the algebra equation:
+
+$x=\frac{1}{6}+\frac{5}{6}(x+1)$
+
+that gives $x=6$ when solving for $x$.
+
+Let's generalize now. Let's say we have some experiment that has fixed probability $p$ of success. We repeat the experiment until it succeeds. Then if $x$ is the 
+expected number of trials until success, we have:
+
+$x=p(1)+(1-p)(x+1)\implies x=p+x-px+1-p \implies px=1\implies x=1/p$.
+
+Probability distributions of this form are called _geometric distributions_. 
+
+In this case, the experiment was rolling a die and success was defined by seeing a $6$, so it is a _geometric distribution with success rate_ $\frac{1}{6}$. And so the expected number of trials until sucess is $\frac{1}{1/6}=6$.
+
 
 
 
