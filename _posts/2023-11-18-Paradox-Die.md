@@ -89,7 +89,7 @@ print("Estimate for B: " + "{0:0.3f}".format(estimate_B(100000),2))
 ```
 The 100,000s in the last two lines represent the number of sequences being rolled for the estimate; you can add zeros for accuracy or subtract zeros for faster run-time.
 
-The estimate for $A$ should be close to $2.727$ and the estimate for B should be close to $3.000$. We will later see that the exact value for $A$ is $30/11$ and the exact value for $B$ is $3$, but it is helpful to first unambiguously verify that $B$ is greater than $A$ (and ensure that we are on the same page of what $A$ and $B$ mean) before diving into the possibly unintuitive math.
+The estimate for $A$ should be close to $2.727$ and the estimate for B should be close to $3.000$. The exact value for $A$ is $30/11$ and the exact value for $B$ is $3$, but it is helpful to first unambiguously experimentally verify that $B$ is greater than $A$ (and ensure that we are on the same page of what $A$ and $B$ mean) before diving into the possibly unintuitive math.
 
 ---
 # Primer on geometric distributions
@@ -167,8 +167,30 @@ and so:
 
 $E[\text{rolls until first 6}| \text{ all rolls even}]=\sum\limits_{k=1}^\infty k \frac{3}{2}\left(\frac{1}{3}\right)^{k-1}=\frac{3}{2}\left(\frac{1}{(1-\frac{2}{3})^2}=\frac{3}{2}$
 
+There is another, cuter, way to answer the second problem that will be important for our evaluation of $B$. We will first rephrase the question as "What is 
+the expected number of rolls of a $D6$ until the first $6$, given that $6$ is the first to occur out of ${1,3,5,6}$?". We can rephrase this again as "What is the expected number of rolls of a $D6$ until the first side in ${1,3,5,6}$ shows up, given that $6$ is the first to occur out of ${1,3,5,6}$?".
+
+Now we have some neat symmetry - the expected number of rolls of a $D6$ until a the first side in ${1,3,5,6}$ shows up shouldn't depend on which of those four sides happened to be first. So the following will have the same answer as the second question: "What is the expected number of rolls of a die until the first side in ${1,3,5,6}$ shows up?"
+
+That's a geometric distribution with success rate $\frac{4}{6}$! And so its expectation is $\frac{1}{4/6}=\frac{3}{2}$.
+
 
 ---
-# Rolls until second 6, given all even
+# Adding conditions after the first 6
+
+We'll now make a modification that might seem harmless. We will roll a $D6$ one billion times (and keep going until we get a $6$ if we somehow didn't get it in the first 1 billion rolls). What is the expected number of rolls until the first 6 given that _every roll that ever showed up in this process_ is even.
+
+In other words, we are still looking at the number of rolls until the first 6, and we are still requiring that all rolls before the first 6 are even. But now we are also requiring that rolls _after_ the first 6 are even. Does this impact the expectation?
+
+$E[\text{number of rolls}|\textit{even up to 6 and billionth roll}]=\sum\limits_{k=1}^\infty k\frac{\text{Pr(first $6$ on roll $k$ and even up to $6$ and billionth roll}}{\text{Pr(even up to 
+$6$ and billionth roll}}
+
+Now note that even under the assumption of having all evens show up in the first billion rolls, having no $6$ show up in the first billion rolls is \textit{tiny}- $(\frac{2}{3})^{1000000000}$. So with extreme accuracy, we can approximate the denominator as just the probability that the first billion rolls are all even - $\left( \frac{1}{2}\right)$
+
+Now for $k$ less than one billion, the probability that the first $6$ is on roll $k$ and there are only evens up to the billionth roll is:
+
+$\left(\frac{2}{6}\right)^{k-1}\left(\frac{1}{6}\right)\left(\frac{1}{2}\right)^{1000000000-k}=\left(\frac{2}{3}\right)^k\left(\frac{1}{2}\right)^{1000000001}$
+
+
 
 
