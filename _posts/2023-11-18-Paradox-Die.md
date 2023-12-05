@@ -134,7 +134,7 @@ $x=p(1)+(1-p)(x+1)\implies x=p+x-px+1-p \implies px=1\implies x=1/p$.
 
 Probability distributions of this form are called _geometric distributions_. 
 
-In this case, the experiment was rolling a die and success was defined by seeing a $6$, so it is a _geometric distribution with success rate_ $\frac{1}{6}$. And so the expected number of trials until sucess is $\frac{1}{\frac{1}{6}}=6$.
+In this case, the experiment was rolling a die and success was defined by seeing a $6$, so it is a _geometric distribution with success rate_ $\frac{1}{6}$. And so the expected number of trials until sucess is $\frac{1}{1/6}=6$.
 
 ---
 # Rolls until first 6, given all even
@@ -144,7 +144,7 @@ In this section, we will use $D6$ to refer to a fair $6$-sided die with sides la
 1. What is the expected number of rolls of a $D3$ until we see the first $6$?
 2. What is the expected number of rolls of a $D6$ until we see the first $6$, given that all rolls are even?
 
-For the first question, we have a geometric distribution of success rate $\frac{1}{3}$, so the expected number of trials until success is $\frac{1}{\frac{1}{3}}=3$.
+For the first question, we have a geometric distribution of success rate $\frac{1}{3}$, so the expected number of trials until success is $\frac{1}{1/3}=3$.
 
 The second question was posed by Gil Kalai in a 2017 <a href="https://gilkalai.wordpress.com/2017/09/07/tyi-30-expected-number-of-dice-throws/">blog post</a>. Most people incorrectly answered 3 (and keep in mind the audience for this blog is fairly math literate). The rationale was that the second question seems equivalent to the first. But let's calculate it explicitly.
 
