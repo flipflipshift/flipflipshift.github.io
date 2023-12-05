@@ -189,7 +189,13 @@ Now note that even under the assumption of having all evens show up in the first
 
 Now for $k$ less than one billion, the probability that the first $6$ is on roll $k$ and there are only evens up to the billionth roll is:
 
-$\left(\frac{2}{6}\right)^{k-1}\left(\frac{1}{6}\right)\left(\frac{1}{2}\right)^{1000000000-k}=\left(\frac{2}{3}\right)^k\left(\frac{1}{2}\right)^{1000000001}$
+$\left(\frac{2}{6}\right)^{k-1}\left(\frac{1}{6}\right)\left(\frac{1}{2}\right)^{1000000000-k}=\left(\frac{1}{3}\right)\left(\frac{2}{3}\right)^{k-1}\left(\frac{1}{2}\right)^{1000000000}$
+
+For $k$ greater than one billion, the expressions slightly different, but the contributions are so tiny at this point that we can pretend they are the same with basically no percent change in our answer. So we have
+
+$E[\text{number of rolls}|\textit{even up to 6 and billionth roll}]~\sum\limits_{k=0}^\infty k\left(\frac{1}{3}\right)\left(\frac{2}{3}\right)^{k-1}=\frac{1/3}{(1-2/3)^2}=3$.
+
+which is roughly the expected number of rolls until $6$ on a $D3$ with sides labeled ${2,4,6}$.
 
 
 
