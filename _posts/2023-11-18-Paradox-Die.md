@@ -235,6 +235,7 @@ But when we roll a $6$, the probability of getting two $6\text{s}$ before an odd
 We will solve for $p_0$ and $p_6$ via a system of equations:
 
 $p_0=\frac{1}{6}p_1+\frac{2}{6}p_0$
+
 $p_1=\frac{1}{6}+\frac{2}{6}p_0$
 
 In other words, the probability of success from $S_0$ is equal to the probability of going from $S_0$ to $S_1$ (which occurs when you roll a $6$, so $\frac{1}{6}$) times the probability of success from $S_1$, plus the probability you stay at $S_0$ (which occurs when rolling a $2$ or $4$) times the probability of success from $S_0$.
@@ -247,11 +248,13 @@ $A=\sum\limits_{k=0}^\infty k \frac{\text{Pr(first instance of two $6$ in a row 
 
 That numerator is tricky to calculate. It is much easier to calculate the probability that _an_ instance of exactly two $6\text{s}$ in a row occurs at roll $k$ and all evens until row $k$; this will be higher but we just want an upper bound anyway!.
 
-For $k<2$, this probability is $0$ and for $k=2$, the probability is $\frac{1}{6^2}=\frac{1}{36}$. For $k>2$, this is the probability that the first $k-3$ rolls are even, roll $k-2$ is a $2$ or $4$ and rolls $k-1,k$ are $6$. In other words, $\left(\frac{1}{2}\right)^{k-1}\left(\frac{1}{3}\right)\left(\frac{1}{6}\right)^2=\left(\frac{1}{108}\right)\left(\frac{1}{2^{k-3}\right)$.
+For $k<2$, this probability is $0$ and for $k=2$, the probability is $\frac{1}{6^2}=\frac{1}{36}$. For $k>2$, this is the probability that the first $k-3$ rolls are even, roll $k-2$ is a $2$ or $4$ and rolls $k-1,k$ are $6$. In other words, $\left(\frac{1}{2}\right)^{k-1}\left(\frac{1}{3}\right)\left(\frac{1}{6}\right)^2=\left(\frac{1}{108}\right)\left(\frac{1}{2^{k-3}}\right)$.
 
 So:
 
-$A<22(2\left(\frac{1}{36}\right)+\sum\limits_{k=3}^\infty k\left(\frac{1}{108}\right)\left(\frac{1}{2}\right)^{k-3})=77/27<2.852$ (skipping some algebra to manipulate the sum). The exact answer for $A$ is actually $30/11$, which is about $2.72$.
+$A<22(2\left(\frac{1}{36}\right)+\sum\limits_{k=3}^\infty k\left(\frac{1}{108}\right)\left(\frac{1}{2}\right)^{k-3})=77/27<2.852$.
+
+(skipping some algebra to manipulate the sum). The exact answer for $A$ is actually $30/11$, which is about $2.72$.
 
 ---
 # The general case
