@@ -184,7 +184,7 @@ We'll now make a modification that might seem harmless. We will roll a $D6$ one 
 In other words, we are still looking at the number of rolls until the first 6, and we are still requiring that all rolls before the first 6 are even. But now we are also requiring that rolls _after_ the first 6 are even. Does this impact the expectation? Intuitively one might think "no", but we'll see that the expectation nearly doubles.
 
 $E[\text{number of rolls}\mid \text{evens up to 6 and billionth roll}]=\sum\limits_{k=1}^\infty k\frac{\text{Pr(first $6$ on roll $k$ and even up to $6$ and billionth roll}}{\text{Pr(even up to 
-$6$ and billionth roll}}
+$6$ and billionth roll}}$
 
 Now note that even under the assumption of having all evens show up in the first billion rolls, having no $6$ show up in the first billion rolls is _tiny_- $(\frac{2}{3})^{1000000000}$. So with extreme accuracy, we can approximate the denominator as just the probability that the first billion rolls are all even - $\left( \frac{1}{2}\right)$
 
@@ -194,7 +194,7 @@ $\left(\frac{2}{6}\right)^{k-1}\left(\frac{1}{6}\right)\left(\frac{1}{2}\right)^
 
 For $k$ greater than one billion, the expressions slightly different, but the contributions are so astronomically small at this point that we can pretend they are the same with basically no percent change in our answer. So we have
 
-$E[\text{number of rolls}\mid \textit{even up to 6 and billionth roll}]~\sum\limits_{k=0}^\infty k\left(\frac{1}{3}\right)\left(\frac{2}{3}\right)^{k-1}=\frac{1/3}{(1-2/3)^2}=3$.
+$E[\text{number of rolls}\mid \text{evens up to 6 and billionth roll}]=\sum\limits_{k=0}^\infty k\left(\frac{1}{3}\right)\left(\frac{2}{3}\right)^{k-1}=\frac{1/3}{(1-2/3)^2}=3$.
 
 which is roughly the expected number of rolls until $6$ on a $D3$ with sides labeled ${2,4,6}$.
 
