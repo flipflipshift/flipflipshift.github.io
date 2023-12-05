@@ -165,7 +165,7 @@ ${\rm Pr}(\text{First $6$ on roll $k$} | \text{all rolls even})=\frac{\left(\fra
 
 and so:
 
-$E[\text{rolls until first 6}| \text{ all rolls even}]=\sum\limits_{k=1}^\infty k \frac{3}{2}\left(\frac{1}{3}\right)^{k-1}=\frac{3}{2}\left(\frac{1}{(1-\frac{2}{3})^2}=\frac{3}{2}$
+$E[\text{rolls until first 6}| \text{ all rolls even}]=\sum\limits_{k=1}^\infty k \frac{3}{2}\left(\frac{1}{3}\right)^{k-1}=\frac{3}{2}\left(\frac{1}{(1-\frac{2}{3})^2}\right)=\frac{3}{2}$
 
 There is another, cuter, way to answer the second problem that will be important for our evaluation of $B$. We will first rephrase the question as "What is 
 the expected number of rolls of a $D6$ until the first $6$, given that $6$ is the first to occur out of ${1,3,5,6}$?". We can rephrase this again as "What is the expected number of rolls of a $D6$ until the first side in ${1,3,5,6}$ shows up, given that $6$ is the first to occur out of ${1,3,5,6}$?".
