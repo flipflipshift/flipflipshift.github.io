@@ -104,7 +104,7 @@ $\text{Pr(First $6$ on roll $k$)}=\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
 
 We can now get a formula for the expected number of rolls of a die until we see the first $6$. The <a href="https://online.stat.psu.edu/stat500/lesson/3/3.2/3.2.1">formula for expectation</a> gives:
 
-$E[\text{# rolls until 6}]=\sum\limits_{k=1}^\infty k*\text{Pr(First $6$ on roll $k$)}=\sum\limits_{k=1}^\infty k\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
+$E[\text{num rolls until 6}]=\sum\limits_{k=1}^\infty k*\text{Pr(First $6$ on roll $k$)}=\sum\limits_{k=1}^\infty k\left(\frac{5}{6}\right)^{k-1}\frac{1}{6}$
 
 Now we'll use the following fact: for $-1<x<1$:
 
@@ -113,7 +113,7 @@ $\sum\limits_{k=1}^\infty k x^{k-1}=\frac{1}{(1-x)^2}$
 This can be obtained by starting with the <a href="https://www.khanacademy.org/math/ap-calculus-bc/bc-series-new/bc-10-2/a/proof-of-infinite-geometric-series-formula">formula for geometric series</a> $\sum\limits_{k=0}^\infty x^{k}=\frac{1}{1-x}$ and taking the derivative of both sides (if you remember calculus) or squaring both sides (if you're very good at algebra).
 
 Plugging in, we have 
-$E[\text{# rolls until 6}]=\frac{1}{6}\frac{1}{(1-\frac{5}{6})^2}=6$. 
+$E[\text{num rolls until 6}]=\frac{1}{6}\frac{1}{(1-\frac{5}{6})^2}=6$. 
 And we are done. Sort of.
 
 Let's try that again, this time using an intuitive trick from Markov chains. We'll use "average" and "expected" interchangably as the former is more colloquial and we are going to be a bit informal here.
