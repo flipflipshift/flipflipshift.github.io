@@ -196,6 +196,4 @@ For $k$ greater than one billion, the expressions slightly different, but the co
 
 $E[\text{number of rolls}\mid \text{evens up to 6 and billionth roll}]=\sum\limits_{k=0}^\infty k\left(\frac{1}{3}\right)\left(\frac{2}{3}\right)^{k-1}=\frac{1/3}{(1-2/3)^2}=3$.
 
-which is roughly the expected number of rolls until $6$ on a $D3$ with sides labeled ${2,4,6}$.
-
-The conclusion is that adding conditions \textit{after} the first $6$ can indeed impact the expected number of rolls to the first $6$.
+which is roughly the expected number of rolls until $6$ on a $D3$ with sides labeled ${2,4,6}$. The conclusion is that adding conditions _after_ the first $6$ can indeed impact the expected number of rolls to the first $6$.
