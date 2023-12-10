@@ -64,13 +64,13 @@ Our strategy will not involve actually running the AI on $2M$ at all. Or at leas
 ```Python
 x=2*M
 exec(run(x))
-print("0")
+print('0', end='')
 ```
 (remember $M$ is the number of characters of $P$; it is not a variable).
 
 The exec method in Python accepts a string as input and attempt to run it as Python code. So these last few lines will call 'run' on $2M$ (which returns the AI's best answer for the game of $BB(2M)$), then executes that actual program (which prints a very, very large integer), and finally appends a $0$ to the end, making the output 10 times larger than the output of the AI's program.
 
-Including newlines, this adds $29+\log_{10}(M)$ characters to $P$, so the total program length is much less than $2M$. We can pad it out with meaningless code to make it exactly $2M$. Call this program $P'$.
+Including newlines, this adds $29+\log_{10}(M)$ characters to $P$, so the total program length is much less than $2M$. We can pad it out with spaces to make it exactly $2M$. Call this program $P'$.
 
 $P'$ is a program with $2*M$ characters that eventually stops and outputs a number ten times larger than the program the AI suggested does. We've won.
 
