@@ -86,18 +86,14 @@ A workaround for this would be to first simulate the AI 99 times, with a slight 
 To summarize: if the probabilistic AI has some upper-bound on its run-time, we can win 100% of the time without ever simulating the AI. Without that upper-bound, due to the AI having a potentially superior random function, we have to actually simulate the AI some number of times to copy its random behavior.
 
 ---
-# Why can't the AI do this strategy?
+# Why can't an AI do this strategy?
 
-This is a good exercise, and it also proves that the AI will never be perfect at this game for large integers. Informally, this would require the program to recursively call itself ad infinitum, and you can prove via a proof by contradiction that there can never be a workaround for this, even if the AI can modify its own code.
+While it can be possible for an AI to read its own code (see <a href="https://en.wikipedia.org/wiki/Quine_(computing)">Quines</a>), attempting to apply this technique would require the outputted program to recursively call itself ad infinitum without ever actually printing anything, and therefore be invalid. Any workaround is impossible as it would lead to a logical paradox akin to Berry's paradox.
 
----
-# Okay, but how about another AI? Can't it do this too?
+Okay, but how about another AI? Can't it do this too? I've just given you an algorithm to beat the AI; of course an AI can follow this algorithm as well. But viewing that combination of two AI's as a single AI, you can again defeat it for large $N$ using the above trick.
 
-Forget AI, even a short program can win this way, right? I've just given you an algorithm to beat the AI; of course a program can follow this algorithm as well. But viewing that combination of AI + program as a single AI, you can again defeat it for large $N$ using the above trick. Likewise for any system of multiple AI's - even if they can build new AI's and modify each other's code, it can _still_ be defeated with this simple technique. Because all the instructions of code-modification and AI construction are in the original AI's code.
+What if we had a system of multiple AIs that were designed to build new AIs when they found themselves to be insufficient for the required $n$ and/or modify their own codes? It doesn't matter - you can _still_ defeat the whole system with this technique as all instructions for code-modification and AI construction are in the original AI's code.
 
-You can contemplate designing an AI that builds a modified AI on inputs that are too large, using some modification of this trick. Nothing changes.
-
----
 # Caveats
 
 One big assumption in all this is that the AI will give an acceptable answer when playing the game. If the AI does not spit out a valid Python program, then our strategy will fail as well and we are both disqualified.
@@ -126,7 +122,7 @@ while(not found):
 ```
 This Python program prints the first counter-example to  <a href="https://en.wikipedia.org/wiki/Goldbach%27s_conjecture">Goldbach's conjecture</a>. To determine if it runs forever or not, you would need to resolve Goldbach's conjecture, which remains unanswered after nearly 300 years of effort by many of the top mathematicians in the world. 
 
-So we must assume that the AI is desigened to always provide a valid answer to the game, choosing to risk losing by writing an inferior program which it knows is valid rather than risk getting disqualified by returning a program it isn't sure is valid or not.
+So we must assume that the AI is designed to always provide a valid answer to the game, choosing to risk losing by writing an inferior program which it knows is valid rather than risk getting disqualified by returning a program it isn't sure is valid or not.
 
 We are also assuming that the Church-Turing thesis holds in order to translate the AI into Python code. This thesis has not been proven because it is hard to even formalize the statement, but the majority opinion is that the thesis holds. In fact, I haven't been able to find anything even speculative about futuristic models of computation that don't satisfy the Church-Turing thesis. Even futuristic quantum computers satisfy the Church-Turing thesis (as mentioned above).
 
