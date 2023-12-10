@@ -15,11 +15,11 @@ Imagine that you and I were playing a game to see who could describe the bigger 
 
 "The largest integer that can be described in 10,000 letters or fewer plus one."
 
-This is known as Berry's paradox - I've supplied a description for an integer in fewer than 10,000 letters that is supposedly larger than all integers that can be described in 1000 letters or fewer. The resolution is that what counts as a "formal description for a number" is not actually well-defined (and can never really be defined in a way that both allows unlimited abstraction). 
+This is known as Berry's paradox - I've supplied a description for an integer in much fewer than 10,000 letters that is supposedly larger than all integers that can be described in 10,000 letters or fewer. The resolution is that what counts as a "formal description for a number" is not actually well-defined (and can never really be defined in a way that allows unlimited abstraction). 
 
 But the game becomes well-defined if we require our descriptions to be programs in a given language. You might think that you can write a short program that searches through all 10,000 character programs and outputs the one that prints the largest integer, but the <a href="https://en.wikipedia.org/wiki/Halting_problem">halting problem</a> illustrates the impossibility of identifying which programs print a (finite) integer.
 
-Now imagine you were to play this game against an AI, and let's say the character limit was twice the length of the AI's code. Then your answer can be "get the AI's output when asked this question, execute that output program, and add 1" converted into code. Even if you have no idea how the AI works, as long as you can read its source code, you can beat it.
+Now imagine you were to play this game against an AI, and let's say the character limit was twice the length of the AI's code. Then your answer can be "get the AI's output when asked this question, execute that output program, and add 1", converted into code. Even if you have no idea how the AI works, as long as you can read its source code, you can beat it.
 
 ---
 # The Busy-Beaver game
