@@ -4,9 +4,22 @@ Once upon a time, it was believed that a computer could never beat the top playe
 
 As this <a href="https://www.businessinsider.com/computers-beating-humans-at-advanced-chess-2013-11">business insider</a> link posits, do all tasks have the same fate? Will we eventually get to the point where humans are completely unnecessary for all tasks?
 
-I've seen many opinion posts arguing one way or another. It is probably true that for many tasks, AI will eventually be good enough to not require humans. But below I'll present a simple, well-defined task where human + AI will always outperform a lone AI.
+I've seen many opinion posts arguing one way or another. It is probably true that for many tasks, AI will eventually be good enough to not require humans. But below I'll present a simple, well-defined task where it seems that human + AI will always outperform a lone AI.
 
 This is not a real-world relevant task. But asking yourself _why_ a normal human is always able to add value in this problem is worth pondering.
+
+---
+# Overview
+
+Imagine that you and I were playing a game to see who could describe the bigger integer in 1000 letters or fewer. You could try to squeeze the definition of <a href="https://en.wikipedia.org/wiki/Graham%27s_number">Graham's Number</a> in there, then make tweaks to make the number even bigger. But what if I were to answer:
+
+"The largest integer that can be described in 10,000 letters or fewer plus one."
+
+This is known as Berry's paradox - I've supplied a description for an integer in fewer than 10,000 letters that is supposedly larger than all integers that can be described in 1000 letters or fewer. The resolution is that what counts as a "formal description for a number" is not actually well-defined (and can never really be defined in a way that both allows unlimited abstraction). 
+
+But the game becomes well-defined if we require our descriptions to be programs in a given language. You might think that you can write a short program that searches through all 10,000 character programs and outputs the one that prints the largest integer, but the <a href="https://en.wikipedia.org/wiki/Halting_problem">halting problem</a> illustrates the impossibility of identifying which programs print a (finite) integer.
+
+Now imagine you were to play this game against an AI, and let's say the character limit was twice the length of the AI's code. Then your answer can be "get the AI's output when asked this question, execute that output program, and add 1" converted into code. Even if you have no idea how the AI works, as long as you can read its source code, you can beat it.
 
 ---
 # The Busy-Beaver game
