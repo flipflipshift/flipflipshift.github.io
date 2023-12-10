@@ -11,13 +11,13 @@ This is not a real-world relevant task. But it formalizes the intuition that a h
 ---
 # Overview
 
-Imagine that you and I were playing a game to see who could describe the bigger integer in 1000 letters or fewer. You could try to squeeze the definition of <a href="https://en.wikipedia.org/wiki/Graham%27s_number">Graham's Number</a> in there, then make tweaks to make the number even bigger. But what if I were to answer:
+Imagine that you and I were playing a game to see who could describe the bigger integer in 1,000 letters or fewer. You could try to squeeze the definition of <a href="https://en.wikipedia.org/wiki/Graham%27s_number">Graham's Number</a> in there, then make tweaks to make the number even bigger. But what if I were to answer:
 
-"The largest integer that can be described in 10,000 letters or fewer plus one."
+"The largest integer that can be described in 1,000 letters or fewer plus one."
 
-This is known as Berry's paradox - I've supplied a description for an integer in much fewer than 10,000 letters that is supposedly larger than all integers that can be described in 10,000 letters or fewer. The resolution is that what counts as a "formal description for a number" is not actually well-defined (and can never really be defined in a way that allows unlimited abstraction). 
+This is known as Berry's paradox - I've supplied a description for an integer in fewer than 1,000 letters that is supposedly larger than all integers that can be described in 1,000 letters or fewer. The resolution is that what counts as a "formal description for a number" is not actually well-defined (and can never really be defined in a way that allows unlimited abstraction). 
 
-But the game becomes well-defined if we require our descriptions to be programs in a given language. You might think that you can write a short program that searches through all 10,000 character programs and outputs the one that prints the largest integer, but the <a href="https://en.wikipedia.org/wiki/Halting_problem">halting problem</a> illustrates the impossibility of identifying which programs print a (finite) integer.
+But the game becomes well-defined if we require our descriptions to be programs in a given language. You might think that you can write a short program that searches through all 1,000 character programs and outputs the one that prints the largest integer, but the <a href="https://en.wikipedia.org/wiki/Halting_problem">halting problem</a> illustrates the impossibility of identifying which programs print a (finite) integer.
 
 Now imagine you were to play this game against an AI, and let's say the character limit was twice the length of the AI's code. Then your answer can be "get the AI's output when asked this question, execute that output program, and add 1", converted into code. Even if you have no idea how the AI works, as long as you can read its source code, you can beat it.
 
@@ -26,20 +26,20 @@ Now imagine you were to play this game against an AI, and let's say the characte
 
 Consider the following game between two players:
 
-**Both players must write a Python code in 1000 characters that prints an integer. Whoever writes the program that prints the largest integer wins. Any runtime is allowed, as long as the program eventually stops.**
+**Both players must write a Python code in 1,000 characters that prints an integer. Whoever writes the program that prints the largest integer wins. Any runtime is allowed, as long as the program eventually stops.**
 
 For the sake of making the problem timeless, let's force the Python version to be Python 3.11.6, forbid any import statements, and require all characters to be ones that you can see on a typical US-International Windows computer keyboard in the year 2023. We'll also assume that additional memory can always be provided when required. There are a couple questions I'd like you to ponder:
 
 1. Is there a "biggest possible integer" that a program following these rules can output?
 2. If you are allowed to "cheat" and see the other players' answer before submitting your own, are you guaranteed victory? Or is it possible that the best you can do is tie?
 
-To answer the first, consider that there are only a finite number of acceptable characters. I don't know the precise number, but let's say it's fewer than 200. So using the <a href="https://en.wikipedia.org/wiki/Rule_of_product">rule of product</a> from combinatorics, there are fewer than ${200}^{1000}$ texts of 1000 characters in existence. This is a huge number, but even so it is _finite_. And so the number of those texts which happen to also be Python codes is also finite.
+To answer the first, consider that there are only a finite number of acceptable characters. I don't know the precise number, but let's say it's fewer than 200. So using the <a href="https://en.wikipedia.org/wiki/Rule_of_product">rule of product</a> from combinatorics, there are fewer than ${200}^{1000}$ texts of 1,000 characters in existence. This is a huge number, but even so it is _finite_. And so the number of those texts which happen to also be Python codes is also finite.
 
-Because there are only a finite number of programs in $1000$ characters that satisfy the rules, there must be a _maximum_ integer outputted by all these valid programs. This answers the second question - if your opponent happens to write down a program that spits out this maximum integer, the best you can do is to copy that program and end the game in a tie. So the answer to the second question is "no, it is possible that at best you can tie".
+Because there are only a finite number of programs in 1,000 characters that satisfy the rules, there must be a _maximum_ integer outputted by all these valid programs. This answers the second question - if your opponent happens to write down a program that spits out this maximum integer, the best you can do is to copy that program and end the game in a tie. So the answer to the second question is "no, it is possible that at best you can tie".
 
 But even if the other player doesn't have the maximum integer, it can still be extremely difficult to improve their program. After all, that player will have likely combed through their program several times to look for any possible improvements before submission. You will have to find an improvement that they were unable to find.
 
-We'll call this game $BB(1000)$, where $1000$ indicates the allowed number of characters and $BB$ is a reference to the <a href="https://en.wikipedia.org/wiki/Busy_beaver">Busy Beaver problem</a>, upon which this game is based. We'll use $BB(n)$ to indicate the version of the game where $n$ characters are allowed.
+We'll call this game $BB(1000)$, where 1000 indicates the allowed number of characters and $BB$ is a reference to the <a href="https://en.wikipedia.org/wiki/Busy_beaver">Busy Beaver problem</a>, upon which this game is based. We'll use $BB(n)$ to indicate the version of the game where $n$ characters are allowed.
 
 Let's consider some futuristic hyper-intelligent AI that is specifically designed to play the game $BB(n)$. In other words, it accepts an integer $n$ as input and spits out a Python 3.11.6 program of length $n$ that prints a very large integer. We'll show that you + AI can outperform the lone AI in the game of $BB(n)$ when $n$ is very large.
 
