@@ -6,7 +6,7 @@ As this <a href="https://www.businessinsider.com/computers-beating-humans-at-adv
 
 I've seen many opinion posts arguing one way or another. It is probably true that for many tasks, AI will eventually be good enough to not require humans. But below I'll present a simple, well-defined task where it seems that human + AI will always outperform a lone AI.
 
-This is not a real-world relevant task. But asking yourself _why_ a normal human is always able to add value in this problem is worth pondering.
+This is not a real-world relevant task. But it formalizes the intuition that a human should always be able to think "out of the box" that contains the AI's code. And perhaps this reasoning can be applied to some real-world task someday.
 
 ---
 # Overview
@@ -28,12 +28,12 @@ Consider the following game between two players:
 
 **Both players must write a Python code in 1000 characters that prints an integer. Whoever writes the program that prints the largest integer wins. Any runtime is allowed, as long as the program eventually stops.**
 
-For the sake of making the problem timeless, let's force the Python version to be Python 3.11.6 and forbid any import statements. We'll also assume that additional memory can always be provided when required. There are a couple questions I'd like you to ponder:
+For the sake of making the problem timeless, let's force the Python version to be Python 3.11.6, forbid any import statements, and require all characters to be ones that you can see on a typical US-International Windows computer keyboard in the year 2023. We'll also assume that additional memory can always be provided when required. There are a couple questions I'd like you to ponder:
 
 1. Is there a "biggest possible integer" that a program following these rules can output?
 2. If you are allowed to "cheat" and see the other players' answer before submitting your own, are you guaranteed victory? Or is it possible that the best you can do is tie?
 
-To answer the first, consider that there are only a finite number of acceptable characters that can be used in Python code. I don't know the precise number, but let's say it's fewer than 200. So using the <a href="https://en.wikipedia.org/wiki/Rule_of_product">rule of product</a> from combinatorics, there are fewer than ${200}^{1000}$ texts of 1000 characters in existence. This is a huge number, but even so it is _finite_. And so the number of those texts which happen to also be Python codes is also finite.
+To answer the first, consider that there are only a finite number of acceptable characters. I don't know the precise number, but let's say it's fewer than 200. So using the <a href="https://en.wikipedia.org/wiki/Rule_of_product">rule of product</a> from combinatorics, there are fewer than ${200}^{1000}$ texts of 1000 characters in existence. This is a huge number, but even so it is _finite_. And so the number of those texts which happen to also be Python codes is also finite.
 
 Because there are only a finite number of programs in $1000$ characters that satisfy the rules, there must be a _maximum_ integer outputted by all these valid programs. This answers the second question - if your opponent happens to write down a program that spits out this maximum integer, the best you can do is to copy that program and end the game in a tie. So the answer to the second question is "no, it is possible that at best you can tie".
 
@@ -47,7 +47,7 @@ Let's consider some futuristic hyper-intelligent AI that is specifically designe
 ---
 # Playing against the AI
 
-We want to begin by translating this futuristic AI into a single Python 3.11.6 file without imports. This might sounds absurd, but this is a consequence of the <a href="https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis">Church-Turing thesis</a>. Roughly speaking, even an extremely simple programming language like BASIC can solve the same kinds of problems that any other programming language can solve (but the code will be much longer). Even alternative models of computation such as quantum computing are only speed-ups - they can still be simulated by BASIC, but can take exponentially longer to run when they are. Moreover, we can write a program that does this conversion automatically so we won't have to actually understand the code of the AI.
+We want to begin by translating this futuristic AI into a single Python 3.11.6 file without imports. This might sounds absurd, but this is a consequence of the <a href="https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis">Church-Turing thesis</a>. Roughly speaking, even an extremely simple programming language like BASIC can solve the same kinds of problems that any other programming language can solve (but the code and run-time will be much longer). Even alternative models of computation such as quantum computing are only speed-ups - they can still be simulated by BASIC, but with impractical run-time. Moreover, we can write a program that does this conversion automatically so we won't have to actually understand the code of the AI.
 
 
 We will asssume for now that randomness is not involved in the AI, then discuss below how to deal with randomness if it is involved.
@@ -79,26 +79,23 @@ $P'$ is a program with $2*M$ characters that eventually stops and outputs a numb
 
 One might be tempted to believe that the "random" nature of many current Machine Learning algorithms can come to the rescue here since we have not built randomness into the algorithm. Furthermore, while the limits have computation has not changed since the very beginning, the ability to generate "random-seeming" pseudo-random bits _has_ improved and should continues to improve in the future.
 
-One option around this is to "try every possibility" of what the random calls can return, and print all the integers together. This is a deterministic solution that would significantly outperform the AI. But if the probability the AI takes more than $k$ steps to stop is greater than $0$ for all $k$, then we have a problem. Some might not consider such an AI legitimate as it can take arbitrarily long to spit it out anwswer, but in my view it should still be a legitimate player as long as that probability goes to $0$ as $k$ goes to infinity. In this case, simulating all possible outputs would have infinite run-time and therefore be unacceptable.
+One option around this is to "try every possibility" of what the random calls can return, and print all the integers together. This is a deterministic solution that would significantly outperform the AI. But if the probability the AI takes more than $k$ steps to stop is greater than $0$ for all $k$, then we have a problem. Some might not consider such an AI legitimate as it can take arbitrarily long to spit it out anwswer, but in my view it should still be a legitimate player as long as the expectation and variance are finite. In this case, simulating all possible outputs would have infinite run-time and therefore be unacceptable.
 
 A workaround for this would be to first simulate the AI 99 times, with a slight tweak in the code that prints the output of every call for a random bit. We can then have our (deterministic) python code simulate the AI 99 times in a manner that copies the performance by using the same random bits. This process will win against the AI at least 99% of the time.
 
-To recap: if the probabilistic AI has some upper-bound on its run-time, we can win 100% of the time without ever simulating the AI. Without that upper-bound, due to the AI having a potentially superior random function, we have to actually simulate the AI some number of times to copy its random behavior.
+To summarize: if the probabilistic AI has some upper-bound on its run-time, we can win 100% of the time without ever simulating the AI. Without that upper-bound, due to the AI having a potentially superior random function, we have to actually simulate the AI some number of times to copy its random behavior.
 
 ---
 # Why can't the AI do this strategy?
 
-This is a good exercise, and it also proves that the AI will never be perfect at this game for large integers. Informally, this would require the program to recursively call itself ad infinitum, and you can prove via a proof by contradiction that there can never be a workaround for this.
+This is a good exercise, and it also proves that the AI will never be perfect at this game for large integers. Informally, this would require the program to recursively call itself ad infinitum, and you can prove via a proof by contradiction that there can never be a workaround for this, even if the AI can modify its own code.
 
 ---
-# Okay, but how about another AI? Can't it do this?
+# Okay, but how about another AI? Can't it do this too?
 
-Forget AI, even a basic program can do this, right? I've just given you an algorithm to beat the AI; of course a program can follow this algorithm as well. But viewing that combination of AI + program as a single AI, you can again defeat it for large $N$ using the above trick.
+Forget AI, even a short program can win this way, right? I've just given you an algorithm to beat the AI; of course a program can follow this algorithm as well. But viewing that combination of AI + program as a single AI, you can again defeat it for large $N$ using the above trick. Likewise for any system of multiple AI's - even if they can build new AI's and modify each other's code, it can _still_ be defeated with this simple technique. Because all the instructions of code-modification and AI construction are in the original AI's code.
 
----
-# Okay, but what if modify the AI to do something like this strategy whenever the input is bigger than its length?
-
-No matter how "meta" the AI playing this game is, you can always "out-meta" the strategy by one level with the exact same trick.
+You can contemplate designing an AI that builds a modified AI on inputs that are too large, using some modification of this trick. Nothing changes.
 
 ---
 # Caveats
